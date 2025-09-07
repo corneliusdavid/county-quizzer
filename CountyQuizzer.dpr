@@ -1,4 +1,4 @@
-program CountyQizzer;
+program CountyQuizzer;
 
 uses
   System.StartUpCopy,
