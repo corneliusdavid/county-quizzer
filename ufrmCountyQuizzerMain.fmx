@@ -1,0 +1,414 @@
+object frmStateCountyQuiz: TfrmStateCountyQuiz
+  Left = 0
+  Top = 0
+  Caption = 'US State Counties Quiz'
+  ClientHeight = 600
+  ClientWidth = 400
+  FormFactor.Width = 320
+  FormFactor.Height = 568
+  FormFactor.Devices = [Desktop, iPhone, iPad]
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  OnResize = FormResize
+  DesignerMasterStyle = 0
+  object StyleBook1: TStyleBook
+    Styles = <
+      item
+      end>
+    Left = 24
+    Top = 24
+  end
+  object LayMain: TLayout
+    Align = Client
+    Size.Width = 400.00000000000000000
+    Size.Height = 600.00000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object LayTop: TLayout
+      Align = Top
+      Padding.Left = 10.00000000000000000
+      Padding.Top = 10.00000000000000000
+      Padding.Right = 10.00000000000000000
+      Padding.Bottom = 5.00000000000000000
+      Size.Width = 400.00000000000000000
+      Size.Height = 120.00000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      object lblTitle: TLabel
+        Align = Top
+        StyledSettings = [Family, Style]
+        Margins.Bottom = 5.00000000000000000
+        Position.X = 10.00000000000000000
+        Position.Y = 10.00000000000000000
+        Size.Width = 380.00000000000000000
+        Size.Height = 25.00000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Font.Size = 18.00000000000000000
+        TextSettings.HorzAlign = Center
+        Text = 'State Counties Quiz'
+        TabOrder = 0
+      end
+      object lblState: TLabel
+        Align = Top
+        StyledSettings = [Family, Style, FontColor]
+        Position.X = 10.00000000000000000
+        Position.Y = 40.00000000000000000
+        Size.Width = 380.00000000000000000
+        Size.Height = 20.00000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Font.Size = 14.00000000000000000
+        Text = 'Select State:'
+        TabOrder = 1
+      end
+      object cmbStates: TComboBox
+        Align = Top
+        Margins.Top = 5.00000000000000000
+        Margins.Bottom = 10.00000000000000000
+        Position.X = 10.00000000000000000
+        Position.Y = 65.00000000000000000
+        Size.Width = 380.00000000000000000
+        Size.Height = 30.00000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 2
+        OnChange = cmbStatesChange
+      end
+    end
+    object LayQuizMode: TLayout
+      Align = Top
+      Padding.Left = 10.00000000000000000
+      Padding.Top = 5.00000000000000000
+      Padding.Right = 10.00000000000000000
+      Padding.Bottom = 5.00000000000000000
+      Position.Y = 120.00000000000000000
+      Size.Width = 400.00000000000000000
+      Size.Height = 80.00000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      object rbRecall: TRadioButton
+        Align = Top
+        IsChecked = True
+        Margins.Bottom = 3.00000000000000000
+        Position.X = 10.00000000000000000
+        Position.Y = 5.00000000000000000
+        Size.Width = 380.00000000000000000
+        Size.Height = 20.00000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        Text = 'Recall (List all counties)'
+        OnChange = rbQuizModeChange
+      end
+      object rbRecognition: TRadioButton
+        Align = Top
+        Margins.Bottom = 3.00000000000000000
+        Position.X = 10.00000000000000000
+        Position.Y = 28.00000000000000000
+        Size.Width = 380.00000000000000000
+        Size.Height = 20.00000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 1
+        Text = 'Recognition (Multiple choice)'
+        OnChange = rbQuizModeChange
+      end
+      object rbSpelling: TRadioButton
+        Align = Top
+        Position.X = 10.00000000000000000
+        Position.Y = 51.00000000000000000
+        Size.Width = 380.00000000000000000
+        Size.Height = 20.00000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 2
+        Text = 'Spelling (Type name)'
+        OnChange = rbQuizModeChange
+      end
+    end
+    object LayProgress: TLayout
+      Align = Top
+      Padding.Left = 10.00000000000000000
+      Padding.Top = 5.00000000000000000
+      Padding.Right = 10.00000000000000000
+      Padding.Bottom = 5.00000000000000000
+      Position.Y = 200.00000000000000000
+      Size.Width = 400.00000000000000000
+      Size.Height = 60.00000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 2
+      object lblProgress: TLabel
+        Align = Top
+        StyledSettings = [Family, Style, FontColor]
+        Position.X = 10.00000000000000000
+        Position.Y = 5.00000000000000000
+        Size.Width = 380.00000000000000000
+        Size.Height = 18.00000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Font.Size = 14.00000000000000000
+        Text = 'Progress: 1/36'
+        TabOrder = 0
+      end
+      object lblStats: TLabel
+        Align = Top
+        StyledSettings = [Family, Style, FontColor]
+        Position.X = 10.00000000000000000
+        Position.Y = 23.00000000000000000
+        Size.Width = 380.00000000000000000
+        Size.Height = 18.00000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Font.Size = 14.00000000000000000
+        Text = 'Score: 0/0 (0.0%)'
+        TabOrder = 1
+      end
+      object RectProgress: TRectangle
+        Align = Top
+        Fill.Color = claLightgray
+        Margins.Top = 5.00000000000000000
+        Position.X = 10.00000000000000000
+        Position.Y = 46.00000000000000000
+        Size.Width = 380.00000000000000000
+        Size.Height = 8.00000000000000000
+        Size.PlatformDefault = False
+        Stroke.Kind = None
+        object RectProgressBar: TRectangle
+          Align = Left
+          Fill.Color = claBlue
+          Size.Width = 50.00000000000000000
+          Size.Height = 8.00000000000000000
+          Size.PlatformDefault = False
+          Stroke.Kind = None
+        end
+      end
+    end
+    object LayQuiz: TLayout
+      Align = Client
+      Padding.Left = 10.00000000000000000
+      Padding.Top = 5.00000000000000000
+      Padding.Right = 10.00000000000000000
+      Padding.Bottom = 5.00000000000000000
+      Size.Width = 400.00000000000000000
+      Size.Height = 280.00000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 3
+      object RectQuizArea: TRectangle
+        Align = Client
+        Fill.Color = claWhite
+        Size.Width = 380.00000000000000000
+        Size.Height = 270.00000000000000000
+        Size.PlatformDefault = False
+        Stroke.Color = claGray
+        object lblQuestion: TLabel
+          Align = Top
+          StyledSettings = [Family, FontColor]
+          Margins.Left = 10.00000000000000000
+          Margins.Top = 10.00000000000000000
+          Margins.Right = 10.00000000000000000
+          Margins.Bottom = 5.00000000000000000
+          Position.X = 10.00000000000000000
+          Position.Y = 10.00000000000000000
+          Size.Width = 360.00000000000000000
+          Size.Height = 22.00000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 16.00000000000000000
+          TextSettings.Font.StyleExt = {00070000000000000004000000}
+          Text = 'Name all counties in Oregon:'
+          TabOrder = 0
+        end
+        object lblCountyHint: TLabel
+          Align = Top
+          StyledSettings = [Family, Style, FontColor]
+          Margins.Left = 10.00000000000000000
+          Margins.Bottom = 5.00000000000000000
+          Position.X = 10.00000000000000000
+          Position.Y = 37.00000000000000000
+          Size.Width = 360.00000000000000000
+          Size.Height = 18.00000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 14.00000000000000000
+          Text = '_ _ _ _ _ _ (6 letters)'
+          Visible = False
+          TabOrder = 1
+        end
+        object memoRecall: TMemo
+          Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+          DataDetectorTypes = []
+          Align = Client
+          Margins.Left = 10.00000000000000000
+          Margins.Top = 5.00000000000000000
+          Margins.Right = 10.00000000000000000
+          Margins.Bottom = 70.00000000000000000
+          Size.Width = 360.00000000000000000
+          Size.Height = 140.00000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 2
+          Visible = False
+          Viewport.Width = 356.00000000000000000
+          Viewport.Height = 136.00000000000000000
+        end
+        object edtSpelling: TEdit
+          Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+          Align = Top
+          TabOrder = 3
+          Position.X = 10.00000000000000000
+          Position.Y = 60.00000000000000000
+          Margins.Left = 10.00000000000000000
+          Margins.Top = 5.00000000000000000
+          Margins.Right = 10.00000000000000000
+          Margins.Bottom = 5.00000000000000000
+          Size.Width = 360.00000000000000000
+          Size.Height = 35.00000000000000000
+          Size.PlatformDefault = False
+          Visible = False
+          OnKeyUp = edtSpellingKeyUp
+        end
+        object LayMultiChoice: TLayout
+          Align = Client
+          Margins.Left = 10.00000000000000000
+          Margins.Top = 5.00000000000000000
+          Margins.Right = 10.00000000000000000
+          Margins.Bottom = 70.00000000000000000
+          Size.Width = 360.00000000000000000
+          Size.Height = 140.00000000000000000
+          Size.PlatformDefault = False
+          Visible = False
+          TabOrder = 4
+          object btnChoice1: TButton
+            Align = Top
+            Margins.Bottom = 8.00000000000000000
+            Size.Width = 360.00000000000000000
+            Size.Height = 45.00000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 0
+            Text = 'Choice 1'
+            OnClick = btnChoiceClick
+          end
+          object btnChoice2: TButton
+            Align = Top
+            Margins.Bottom = 8.00000000000000000
+            Position.Y = 53.00000000000000000
+            Size.Width = 360.00000000000000000
+            Size.Height = 45.00000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 1
+            Text = 'Choice 2'
+            OnClick = btnChoiceClick
+          end
+          object btnChoice3: TButton
+            Align = Top
+            Margins.Bottom = 8.00000000000000000
+            Position.Y = 106.00000000000000000
+            Size.Width = 360.00000000000000000
+            Size.Height = 45.00000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 2
+            Text = 'Choice 3'
+            OnClick = btnChoiceClick
+          end
+          object btnChoice4: TButton
+            Align = Top
+            Position.Y = 159.00000000000000000
+            Size.Width = 360.00000000000000000
+            Size.Height = 45.00000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 3
+            Text = 'Choice 4'
+            OnClick = btnChoiceClick
+          end
+        end
+        object LayAnswer: TLayout
+          Align = Bottom
+          Position.Y = 200.00000000000000000
+          Size.Width = 380.00000000000000000
+          Size.Height = 70.00000000000000000
+          Size.PlatformDefault = False
+          Visible = False
+          TabOrder = 5
+          object RectAnswer: TRectangle
+            Align = Client
+            Fill.Color = claLightblue
+            Margins.Left = 10.00000000000000000
+            Margins.Top = 5.00000000000000000
+            Margins.Right = 10.00000000000000000
+            Margins.Bottom = 5.00000000000000000
+            Size.Width = 360.00000000000000000
+            Size.Height = 60.00000000000000000
+            Size.PlatformDefault = False
+            Stroke.Color = claGray
+            object lblAnswer: TLabel
+              Align = Client
+              StyledSettings = [Family, FontColor]
+              Margins.Left = 10.00000000000000000
+              Margins.Top = 10.00000000000000000
+              Margins.Right = 10.00000000000000000
+              Margins.Bottom = 10.00000000000000000
+              Size.Width = 340.00000000000000000
+              Size.Height = 40.00000000000000000
+              Size.PlatformDefault = False
+              TextSettings.Font.Size = 16.00000000000000000
+              TextSettings.Font.StyleExt = {00070000000000000004000000}
+              TextSettings.HorzAlign = Center
+              Text = 'Answer feedback goes here'
+              TabOrder = 0
+            end
+          end
+        end
+      end
+    end
+    object LayButtons: TLayout
+      Align = Bottom
+      Padding.Left = 10.00000000000000000
+      Padding.Top = 10.00000000000000000
+      Padding.Right = 10.00000000000000000
+      Padding.Bottom = 10.00000000000000000
+      Position.Y = 540.00000000000000000
+      Size.Width = 400.00000000000000000
+      Size.Height = 60.00000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 4
+      object btnCheck: TButton
+        Align = Left
+        Margins.Right = 5.00000000000000000
+        Position.X = 10.00000000000000000
+        Position.Y = 10.00000000000000000
+        Size.Width = 85.00000000000000000
+        Size.Height = 40.00000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        Text = 'Check'
+        OnClick = btnCheckClick
+      end
+      object btnNext: TButton
+        Align = Left
+        Enabled = False
+        Margins.Right = 5.00000000000000000
+        Position.X = 100.00000000000000000
+        Position.Y = 10.00000000000000000
+        Size.Width = 85.00000000000000000
+        Size.Height = 40.00000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 1
+        Text = 'Next'
+        OnClick = btnNextClick
+      end
+      object btnShuffle: TButton
+        Align = Right
+        Margins.Left = 5.00000000000000000
+        Position.X = 220.00000000000000000
+        Position.Y = 10.00000000000000000
+        Size.Width = 85.00000000000000000
+        Size.Height = 40.00000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 2
+        Text = 'Shuffle'
+        OnClick = btnShuffleClick
+      end
+      object btnReset: TButton
+        Align = Right
+        Position.X = 305.00000000000000000
+        Position.Y = 10.00000000000000000
+        Size.Width = 85.00000000000000000
+        Size.Height = 40.00000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 3
+        Text = 'Reset'
+        OnClick = btnResetClick
+      end
+    end
+  end
+end
