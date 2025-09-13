@@ -78,7 +78,7 @@ type
     FQuizMode: TQuizMode;
     FStats: TQuizStats;
     FAnswered: Boolean;
-    
+
     procedure InitializeStates;
     procedure LoadStateData(const StateName: string);
     procedure ShuffleCounties;
@@ -88,12 +88,12 @@ type
     procedure UpdateStats(IsCorrect: Boolean);
     procedure SetQuizMode(Mode: TQuizMode);
     function GetCurrentCounty: string;
+    function GetRandomCounty: string;
     function GenerateMultipleChoice: TArray<string>;
     function CheckRecallAnswer: Integer;
     procedure ResetQuiz;
     procedure UpdateProgressBar;
     procedure SetupMobileLayout;
-  public
   end;
 
 var
@@ -272,20 +272,17 @@ begin
 end;
 
 procedure TfrmStateCountyQuiz.ShuffleCounties;
-var
-  i, j: Integer;
-  temp: string;
 begin
   // Copy counties array
   SetLength(FShuffledCounties, Length(FCurrentState.Counties));
-  for i := 0 to High(FCurrentState.Counties) do
+  for var i := 0 to High(FCurrentState.Counties) do
     FShuffledCounties[i] := FCurrentState.Counties[i];
-  
+
   // Fisher-Yates shuffle
-  for i := High(FShuffledCounties) downto 1 do
+  for var i := High(FShuffledCounties) downto 1 do
   begin
-    j := Random(i + 1);
-    temp := FShuffledCounties[i];
+    var j := Random(i + 1);
+    var temp := FShuffledCounties[i];
     FShuffledCounties[i] := FShuffledCounties[j];
     FShuffledCounties[j] := temp;
   end;
@@ -299,11 +296,11 @@ begin
     lblProgress.Text := Format('Progress: %d/%d', [FCurrentIndex + 1, Length(FShuffledCounties)]);
     UpdateProgressBar;
   end;
-  
+
   // Update stats
-  lblStats.Text := Format('Score: %d/%d (%.1f%%)', 
+  lblStats.Text := Format('Score: %d/%d (%.1f%%)',
     [FStats.Correct, FStats.Total, FStats.Accuracy]);
-  
+
   // Show current question
   ShowQuestion;
 end;
@@ -434,6 +431,23 @@ begin
     Result := '';
 end;
 
+function TfrmStateCountyQuiz.GetRandomCounty: string;
+var
+  RandomStateIdx: Integer;
+  RandomCountyIdx: Integer;
+  StateList: TArray<string>;
+begin
+  // find random state not the current one
+  StateList := FStates.Keys.ToArray;
+  repeat
+    RandomStateIdx := Random(Length(StateList));
+  until StateList[RandomStateIdx] <> FCurrentState.Name;
+
+  // return a random county from the selected random state
+  RandomCountyIdx := Random(Length(FStates[StateList[RandomStateIdx]].Counties));
+  Result := FStates[StateList[RandomStateIdx]].Counties[RandomCountyIdx];
+end;
+
 function TfrmStateCountyQuiz.GenerateMultipleChoice: TArray<string>;
 var
   Correct: string;
@@ -448,18 +462,16 @@ begin
     // Add 3 random incorrect options from other states
     while Options.Count < 4 do
     begin
-      RandomIndex := Random(Length(FCurrentState.Counties));
-      if Options.IndexOf(FCurrentState.Counties[RandomIndex]) = -1 then
-        Options.Add(FCurrentState.Counties[RandomIndex]);
+      Options.Add(GetRandomCounty);
     end;
-    
+
     // Shuffle the options
     for i := Options.Count - 1 downto 1 do
     begin
       RandomIndex := Random(i + 1);
       Options.Exchange(i, RandomIndex);
     end;
-    
+
     Result := Options.ToArray;
   finally
     Options.Free;

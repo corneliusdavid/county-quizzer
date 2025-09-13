@@ -15,8 +15,8 @@ object frmStateCountyQuiz: TfrmStateCountyQuiz
     Styles = <
       item
       end>
-    Left = 24
-    Top = 24
+    Left = 128
+    Top = 48
   end
   object LayMain: TLayout
     Align = Client
