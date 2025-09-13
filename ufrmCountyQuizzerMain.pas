@@ -7,7 +7,7 @@ uses
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.StdCtrls,
   FMX.Controls.Presentation, FMX.ScrollBox, FMX.Memo, FMX.Edit, FMX.ListBox,
   FMX.Layouts, FMX.Objects, System.Generics.Collections, System.Generics.Defaults,
-  FMX.Memo.Types;
+  FMX.Memo.Types, FMX.TabControl;
 
 type
   TQuizMode = (qmRecall, qmRecognition, qmSpelling);
@@ -40,7 +40,6 @@ type
     RectProgress: TRectangle;
     RectProgressBar: TRectangle;
     LayQuiz: TLayout;
-    RectQuizArea: TRectangle;
     lblQuestion: TLabel;
     memoRecall: TMemo;
     LayMultiChoice: TLayout;
@@ -49,7 +48,6 @@ type
     btnChoice3: TButton;
     btnChoice4: TButton;
     edtSpelling: TEdit;
-    LayAnswer: TLayout;
     RectAnswer: TRectangle;
     lblAnswer: TLabel;
     LayButtons: TLayout;
@@ -59,6 +57,10 @@ type
     btnReset: TButton;
     lblCountyHint: TLabel;
     StyleBook1: TStyleBook;
+    QuizTabs: TTabControl;
+    tabRecall: TTabItem;
+    tabMultChoice: TTabItem;
+    tabSpelling: TTabItem;
     procedure FormCreate(Sender: TObject);
     procedure cmbStatesChange(Sender: TObject);
     procedure rbQuizModeChange(Sender: TObject);
@@ -91,6 +93,7 @@ type
     function GetRandomCounty: string;
     function GenerateMultipleChoice: TArray<string>;
     function CheckRecallAnswer: Integer;
+    function CountyMatchFound(const ACounty: string): Boolean;
     procedure ResetQuiz;
     procedure UpdateProgressBar;
     procedure SetupMobileLayout;
@@ -149,22 +152,12 @@ end;
 
 procedure TfrmStateCountyQuiz.SetupMobileLayout;
 begin
-  // Adjust font sizes for mobile
-  lblTitle.TextSettings.Font.Size := 18;
-  lblQuestion.TextSettings.Font.Size := 16;
-  lblProgress.TextSettings.Font.Size := 14;
-  lblStats.TextSettings.Font.Size := 14;
-
   // Adjust button heights for touch
   btnChoice1.Height := 45;
   btnChoice2.Height := 45;
   btnChoice3.Height := 45;
   btnChoice4.Height := 45;
-  btnCheck.Height := 40;
-  btnNext.Height := 40;
-  btnShuffle.Height := 40;
-  btnReset.Height := 40;
-  
+
   // Adjust edit control height
   edtSpelling.Height := 35;
   
@@ -290,6 +283,8 @@ end;
 
 procedure TfrmStateCountyQuiz.UpdateDisplay;
 begin
+  // hide correct/incorrectr
+
   // Update progress
   if Length(FShuffledCounties) > 0 then
   begin
@@ -321,31 +316,31 @@ var
   Choices: TArray<string>;
 begin
   // Hide all quiz panels first
-  memoRecall.Visible := False;
-  LayMultiChoice.Visible := False;
-  edtSpelling.Visible := False;
-  LayAnswer.Visible := False;
-  lblCountyHint.Visible := False;
-  
+//  memoRecall.Visible := False;
+//  LayMultiChoice.Visible := False;
+//  edtSpelling.Visible := False;
+  rectAnswer.Visible := False;
+//  lblCountyHint.Visible := False;
+
   FAnswered := False;
   btnNext.Enabled := False;
   btnCheck.Enabled := True;
-  
+
   case FQuizMode of
     qmRecall:
     begin
-      lblQuestion.Text := Format('Name all %d counties in %s:', 
+      lblQuestion.Text := Format('Name all %d counties in %s:',
         [FCurrentState.CountyCount, FCurrentState.Name]);
       memoRecall.Visible := True;
       memoRecall.Lines.Clear;
       memoRecall.SetFocus;
     end;
-    
+
     qmRecognition:
     begin
       if FCurrentIndex < Length(FShuffledCounties) then
       begin
-        lblQuestion.Text := Format('County #%d - Which of these is a %s county?', 
+        lblQuestion.Text := Format('County #%d - Which county is in %s?',
           [FCurrentIndex + 1, FCurrentState.Name]);
         Choices := GenerateMultipleChoice;
         btnChoice1.Text := Choices[0];
@@ -356,13 +351,13 @@ begin
         btnCheck.Enabled := False; // Answer immediately on click
       end;
     end;
-    
+
     qmSpelling:
     begin
       if FCurrentIndex < Length(FShuffledCounties) then
       begin
         lblQuestion.Text := Format('County #%d - Type the name:', [FCurrentIndex + 1]);
-        lblCountyHint.Text := Format('_ _ _ _ _ _ _ _ _ _ (%d letters)', 
+        lblCountyHint.Text := Format('_ _ _ _ _ _ _ _ _ _ (%d letters)',
           [Length(GetCurrentCounty)]);
         lblCountyHint.Visible := True;
         edtSpelling.Visible := True;
@@ -395,7 +390,7 @@ begin
     RectAnswer.Fill.Color := TAlphaColorRec.Lightcoral;
   end;
   
-  LayAnswer.Visible := True;
+  rectAnswer.Visible := True;
   
   // Enable next button for non-recall modes
   if (FQuizMode <> qmRecall) and (FCurrentIndex < Length(FShuffledCounties) - 1) then
@@ -413,9 +408,21 @@ procedure TfrmStateCountyQuiz.SetQuizMode(Mode: TQuizMode);
 begin
   FQuizMode := Mode;
   case Mode of
-    qmRecall: rbRecall.IsChecked := True;
-    qmRecognition: rbRecognition.IsChecked := True;
-    qmSpelling: rbSpelling.IsChecked := True;
+    qmRecall:
+      begin
+         rbRecall.IsChecked := True;
+         QuizTabs.ActiveTab := tabRecall;
+      end;
+    qmRecognition:
+      begin
+        rbRecognition.IsChecked := True;
+        QuizTabs.ActiveTab := tabMultChoice;
+      end;
+    qmSpelling:
+      begin
+        rbSpelling.IsChecked := True;
+        QuizTabs.ActiveTab := tabSpelling;
+      end;
   end;
   
   FCurrentIndex := 0;
@@ -433,6 +440,7 @@ end;
 
 function TfrmStateCountyQuiz.GetRandomCounty: string;
 var
+  ACounty: string;
   RandomStateIdx: Integer;
   RandomCountyIdx: Integer;
   StateList: TArray<string>;
@@ -443,9 +451,13 @@ begin
     RandomStateIdx := Random(Length(StateList));
   until StateList[RandomStateIdx] <> FCurrentState.Name;
 
-  // return a random county from the selected random state
-  RandomCountyIdx := Random(Length(FStates[StateList[RandomStateIdx]].Counties));
-  Result := FStates[StateList[RandomStateIdx]].Counties[RandomCountyIdx];
+  repeat
+    // get a random county from the selected random state
+    RandomCountyIdx := Random(Length(FStates[StateList[RandomStateIdx]].Counties));
+    ACounty := FStates[StateList[RandomStateIdx]].Counties[RandomCountyIdx];
+  until not CountyMatchFound(ACounty);
+
+  Result := ACounty;
 end;
 
 function TfrmStateCountyQuiz.GenerateMultipleChoice: TArray<string>;
@@ -489,7 +501,7 @@ begin
   UserList := TStringList.Create;
   try
     UserList.Text := memoRecall.Lines.Text;
-    
+
     // Clean up user input
     for i := UserList.Count - 1 downto 0 do
     begin
@@ -499,7 +511,7 @@ begin
       else
         UserList[i] := County;
     end;
-    
+
     // Count correct matches
     for County in FCurrentState.Counties do
     begin
@@ -550,7 +562,7 @@ var
   CorrectCount: Integer;
 begin
   if FAnswered then Exit;
-  
+
   case FQuizMode of
     qmRecall:
     begin
@@ -559,7 +571,7 @@ begin
       FStats.Total := FCurrentState.CountyCount;
       ShowAnswer('', True); // Always show as "completed"
     end;
-    
+
     qmSpelling:
     begin
       IsCorrect := SameText(Trim(edtSpelling.Text), GetCurrentCounty);
@@ -595,14 +607,25 @@ var
   IsCorrect: Boolean;
 begin
   if FAnswered then Exit;
-  
+
   SelectedCounty := (Sender as TButton).Text;
   IsCorrect := SameText(SelectedCounty, GetCurrentCounty);
   UpdateStats(IsCorrect);
   ShowAnswer(SelectedCounty, IsCorrect);
 end;
 
-procedure TfrmStateCountyQuiz.edtSpellingKeyUp(Sender: TObject; var Key: Word; 
+function TfrmStateCountyQuiz.CountyMatchFound(const ACounty: string): Boolean;
+begin
+  Result := False;
+
+  for var c in FCurrentState.Counties do
+    if SameText(c, ACounty) then begin
+      Result := True;
+      Break;
+    end;
+end;
+
+procedure TfrmStateCountyQuiz.edtSpellingKeyUp(Sender: TObject; var Key: Word;
   var KeyChar: Char; Shift: TShiftState);
 begin
   if (Key = vkReturn) and not FAnswered then // Enter key

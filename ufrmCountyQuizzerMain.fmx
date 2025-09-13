@@ -186,167 +186,212 @@ object frmStateCountyQuiz: TfrmStateCountyQuiz
       Size.Height = 280.00000000000000000
       Size.PlatformDefault = False
       TabOrder = 3
-      object RectQuizArea: TRectangle
+      object QuizTabs: TTabControl
         Align = Client
-        Fill.Color = claWhite
         Size.Width = 380.00000000000000000
-        Size.Height = 270.00000000000000000
+        Size.Height = 222.00000000000000000
         Size.PlatformDefault = False
-        Stroke.Color = claGray
-        object lblQuestion: TLabel
-          Align = Top
-          StyledSettings = [Family, FontColor]
-          Margins.Left = 10.00000000000000000
-          Margins.Top = 10.00000000000000000
-          Margins.Right = 10.00000000000000000
-          Margins.Bottom = 5.00000000000000000
-          Position.X = 10.00000000000000000
-          Position.Y = 10.00000000000000000
-          Size.Width = 360.00000000000000000
-          Size.Height = 22.00000000000000000
+        TabIndex = 0
+        TabOrder = 0
+        TabPosition = None
+        Sizes = (
+          380s
+          222s
+          380s
+          222s
+          380s
+          222s)
+        object tabRecall: TTabItem
+          CustomIcon = <
+            item
+            end>
+          IsSelected = True
+          Size.Width = 8.00000000000000000
+          Size.Height = 8.00000000000000000
           Size.PlatformDefault = False
-          TextSettings.Font.Size = 16.00000000000000000
-          TextSettings.Font.StyleExt = {00070000000000000004000000}
-          Text = 'Name all counties in Oregon:'
+          StyleLookup = ''
           TabOrder = 0
-        end
-        object lblCountyHint: TLabel
-          Align = Top
-          StyledSettings = [Family, Style, FontColor]
-          Margins.Left = 10.00000000000000000
-          Margins.Bottom = 5.00000000000000000
-          Position.X = 10.00000000000000000
-          Position.Y = 37.00000000000000000
-          Size.Width = 360.00000000000000000
-          Size.Height = 18.00000000000000000
-          Size.PlatformDefault = False
-          TextSettings.Font.Size = 14.00000000000000000
-          Text = '_ _ _ _ _ _ (6 letters)'
-          Visible = False
-          TabOrder = 1
-        end
-        object memoRecall: TMemo
-          Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
-          DataDetectorTypes = []
-          Align = Client
-          Margins.Left = 10.00000000000000000
-          Margins.Top = 5.00000000000000000
-          Margins.Right = 10.00000000000000000
-          Margins.Bottom = 70.00000000000000000
-          Size.Width = 360.00000000000000000
-          Size.Height = 140.00000000000000000
-          Size.PlatformDefault = False
-          TabOrder = 2
-          Visible = False
-          Viewport.Width = 356.00000000000000000
-          Viewport.Height = 136.00000000000000000
-        end
-        object edtSpelling: TEdit
-          Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
-          Align = Top
-          TabOrder = 3
-          Position.X = 10.00000000000000000
-          Position.Y = 60.00000000000000000
-          Margins.Left = 10.00000000000000000
-          Margins.Top = 5.00000000000000000
-          Margins.Right = 10.00000000000000000
-          Margins.Bottom = 5.00000000000000000
-          Size.Width = 360.00000000000000000
-          Size.Height = 35.00000000000000000
-          Size.PlatformDefault = False
-          Visible = False
-          OnKeyUp = edtSpellingKeyUp
-        end
-        object LayMultiChoice: TLayout
-          Align = Client
-          Margins.Left = 10.00000000000000000
-          Margins.Top = 5.00000000000000000
-          Margins.Right = 10.00000000000000000
-          Margins.Bottom = 70.00000000000000000
-          Size.Width = 360.00000000000000000
-          Size.Height = 140.00000000000000000
-          Size.PlatformDefault = False
-          Visible = False
-          TabOrder = 4
-          object btnChoice1: TButton
-            Align = Top
-            Margins.Bottom = 8.00000000000000000
+          Text = 'tabRecall'
+          ExplicitSize.cx = 8.00000000000000000
+          ExplicitSize.cy = 8.00000000000000000
+          object memoRecall: TMemo
+            Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+            DataDetectorTypes = []
+            Align = Client
+            Margins.Left = 10.00000000000000000
+            Margins.Top = 5.00000000000000000
+            Margins.Right = 10.00000000000000000
+            Margins.Bottom = 70.00000000000000000
             Size.Width = 360.00000000000000000
-            Size.Height = 45.00000000000000000
-            Size.PlatformDefault = False
-            TabOrder = 0
-            Text = 'Choice 1'
-            OnClick = btnChoiceClick
-          end
-          object btnChoice2: TButton
-            Align = Top
-            Margins.Bottom = 8.00000000000000000
-            Position.Y = 53.00000000000000000
-            Size.Width = 360.00000000000000000
-            Size.Height = 45.00000000000000000
-            Size.PlatformDefault = False
-            TabOrder = 1
-            Text = 'Choice 2'
-            OnClick = btnChoiceClick
-          end
-          object btnChoice3: TButton
-            Align = Top
-            Margins.Bottom = 8.00000000000000000
-            Position.Y = 106.00000000000000000
-            Size.Width = 360.00000000000000000
-            Size.Height = 45.00000000000000000
+            Size.Height = 140.00000000000000000
             Size.PlatformDefault = False
             TabOrder = 2
-            Text = 'Choice 3'
-            OnClick = btnChoiceClick
-          end
-          object btnChoice4: TButton
-            Align = Top
-            Position.Y = 159.00000000000000000
-            Size.Width = 360.00000000000000000
-            Size.Height = 45.00000000000000000
-            Size.PlatformDefault = False
-            TabOrder = 3
-            Text = 'Choice 4'
-            OnClick = btnChoiceClick
+            Visible = False
+            Viewport.Width = 356.00000000000000000
+            Viewport.Height = 136.00000000000000000
           end
         end
-        object LayAnswer: TLayout
-          Align = Bottom
-          Position.Y = 200.00000000000000000
-          Size.Width = 380.00000000000000000
-          Size.Height = 70.00000000000000000
+        object tabMultChoice: TTabItem
+          CustomIcon = <
+            item
+            end>
+          IsSelected = False
+          Size.Width = 8.00000000000000000
+          Size.Height = 8.00000000000000000
           Size.PlatformDefault = False
-          Visible = False
-          TabOrder = 5
-          object RectAnswer: TRectangle
+          StyleLookup = ''
+          TabOrder = 0
+          Text = 'tabMultChoice'
+          ExplicitSize.cx = 8.00000000000000000
+          ExplicitSize.cy = 8.00000000000000000
+          object LayMultiChoice: TLayout
             Align = Client
-            Fill.Color = claLightblue
+            Margins.Left = 10.00000000000000000
+            Margins.Top = 5.00000000000000000
+            Margins.Right = 10.00000000000000000
+            Margins.Bottom = 70.00000000000000000
+            Size.Width = 360.00000000000000000
+            Size.Height = 140.00000000000000000
+            Size.PlatformDefault = False
+            Visible = False
+            TabOrder = 4
+            object btnChoice1: TButton
+              Align = Top
+              Margins.Bottom = 8.00000000000000000
+              Size.Width = 360.00000000000000000
+              Size.Height = 45.00000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 0
+              Text = 'Choice 1'
+              OnClick = btnChoiceClick
+            end
+            object btnChoice2: TButton
+              Align = Top
+              Margins.Bottom = 8.00000000000000000
+              Position.Y = 53.00000000000000000
+              Size.Width = 360.00000000000000000
+              Size.Height = 45.00000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 1
+              Text = 'Choice 2'
+              OnClick = btnChoiceClick
+            end
+            object btnChoice3: TButton
+              Align = Top
+              Margins.Bottom = 8.00000000000000000
+              Position.Y = 106.00000000000000000
+              Size.Width = 360.00000000000000000
+              Size.Height = 45.00000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 2
+              Text = 'Choice 3'
+              OnClick = btnChoiceClick
+            end
+            object btnChoice4: TButton
+              Align = Top
+              Position.Y = 159.00000000000000000
+              Size.Width = 360.00000000000000000
+              Size.Height = 45.00000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 3
+              Text = 'Choice 4'
+              OnClick = btnChoiceClick
+            end
+          end
+        end
+        object tabSpelling: TTabItem
+          CustomIcon = <
+            item
+            end>
+          IsSelected = False
+          Size.Width = 8.00000000000000000
+          Size.Height = 8.00000000000000000
+          Size.PlatformDefault = False
+          StyleLookup = ''
+          TabOrder = 0
+          Text = 'tabSpelling'
+          ExplicitSize.cx = 8.00000000000000000
+          ExplicitSize.cy = 8.00000000000000000
+          object edtSpelling: TEdit
+            Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+            Align = Top
+            TabOrder = 2
+            Position.X = 10.00000000000000000
+            Position.Y = 60.00000000000000000
             Margins.Left = 10.00000000000000000
             Margins.Top = 5.00000000000000000
             Margins.Right = 10.00000000000000000
             Margins.Bottom = 5.00000000000000000
             Size.Width = 360.00000000000000000
-            Size.Height = 60.00000000000000000
+            Size.Height = 35.00000000000000000
             Size.PlatformDefault = False
-            Stroke.Color = claGray
-            object lblAnswer: TLabel
-              Align = Client
-              StyledSettings = [Family, FontColor]
-              Margins.Left = 10.00000000000000000
-              Margins.Top = 10.00000000000000000
-              Margins.Right = 10.00000000000000000
-              Margins.Bottom = 10.00000000000000000
-              Size.Width = 340.00000000000000000
-              Size.Height = 40.00000000000000000
-              Size.PlatformDefault = False
-              TextSettings.Font.Size = 16.00000000000000000
-              TextSettings.Font.StyleExt = {00070000000000000004000000}
-              TextSettings.HorzAlign = Center
-              Text = 'Answer feedback goes here'
-              TabOrder = 0
-            end
+            Visible = False
+            OnKeyUp = edtSpellingKeyUp
           end
+          object lblCountyHint: TLabel
+            Align = Top
+            StyledSettings = [Family, Style, FontColor]
+            Margins.Left = 10.00000000000000000
+            Margins.Bottom = 5.00000000000000000
+            Position.X = 10.00000000000000000
+            Position.Y = 37.00000000000000000
+            Size.Width = 360.00000000000000000
+            Size.Height = 18.00000000000000000
+            Size.PlatformDefault = False
+            TextSettings.Font.Size = 14.00000000000000000
+            Text = '_ _ _ _ _ _ (6 letters)'
+            Visible = False
+            TabOrder = 1
+          end
+          object lblQuestion: TLabel
+            Align = Top
+            StyledSettings = [Family, FontColor]
+            Margins.Left = 10.00000000000000000
+            Margins.Top = 10.00000000000000000
+            Margins.Right = 10.00000000000000000
+            Margins.Bottom = 5.00000000000000000
+            Position.X = 10.00000000000000000
+            Position.Y = 10.00000000000000000
+            Size.Width = 360.00000000000000000
+            Size.Height = 22.00000000000000000
+            Size.PlatformDefault = False
+            TextSettings.Font.Size = 16.00000000000000000
+            TextSettings.Font.StyleExt = {00070000000000000004000000}
+            Text = 'Name all counties in Oregon:'
+            TabOrder = 0
+          end
+        end
+      end
+      object RectAnswer: TRectangle
+        Align = Bottom
+        Fill.Color = claLightblue
+        Margins.Left = 10.00000000000000000
+        Margins.Top = 5.00000000000000000
+        Margins.Right = 10.00000000000000000
+        Margins.Bottom = 5.00000000000000000
+        Position.X = 20.00000000000000000
+        Position.Y = 232.00000000000000000
+        Size.Width = 360.00000000000000000
+        Size.Height = 38.00000000000000000
+        Size.PlatformDefault = False
+        Stroke.Color = claGray
+        object lblAnswer: TLabel
+          Align = Bottom
+          StyledSettings = [Family, FontColor]
+          Margins.Left = 10.00000000000000000
+          Margins.Top = 10.00000000000000000
+          Margins.Right = 10.00000000000000000
+          Margins.Bottom = 10.00000000000000000
+          Position.X = 10.00000000000000000
+          Position.Y = 5.00000000000000000
+          Size.Width = 340.00000000000000000
+          Size.Height = 23.00000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 16.00000000000000000
+          TextSettings.Font.StyleExt = {00070000000000000004000000}
+          TextSettings.HorzAlign = Center
+          Text = 'Answer feedback goes here'
+          TabOrder = 0
         end
       end
     end
