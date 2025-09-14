@@ -37,8 +37,6 @@ type
     LayProgress: TLayout;
     lblProgress: TLabel;
     lblStats: TLabel;
-    RectProgress: TRectangle;
-    RectProgressBar: TRectangle;
     LayQuiz: TLayout;
     lblQuestion: TLabel;
     memoRecall: TMemo;
@@ -53,7 +51,6 @@ type
     LayButtons: TLayout;
     btnCheck: TButton;
     btnNext: TButton;
-    btnShuffle: TButton;
     btnReset: TButton;
     lblCountyHint: TLabel;
     StyleBook1: TStyleBook;
@@ -62,12 +59,12 @@ type
     tabMultChoice: TTabItem;
     tabSpelling: TTabItem;
     Label1: TLabel;
+    ProgressBar: TProgressBar;
     procedure FormCreate(Sender: TObject);
     procedure cmbStatesChange(Sender: TObject);
     procedure rbQuizModeChange(Sender: TObject);
     procedure btnCheckClick(Sender: TObject);
     procedure btnNextClick(Sender: TObject);
-    procedure btnShuffleClick(Sender: TObject);
     procedure btnResetClick(Sender: TObject);
     procedure btnChoiceClick(Sender: TObject);
     procedure edtSpellingKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char; Shift: TShiftState);
@@ -273,7 +270,7 @@ end;
 
 procedure TfrmStateCountyQuiz.memoRecallChange(Sender: TObject);
 begin
-  FCurrentIndex := memoRecall.Lines.Count - 1;
+  FCurrentIndex := if memoRecall.Lines.Count > 0 then memoRecall.Lines.Count - 1 else 0;
   UpdateProgressLabel;
   UpdateProgressBar;
 end;
@@ -313,14 +310,8 @@ begin
 end;
 
 procedure TfrmStateCountyQuiz.UpdateProgressBar;
-var
-  ProgressPercent: Single;
 begin
-  if Length(FShuffledCounties) > 0 then
-  begin
-    ProgressPercent := (FCurrentIndex + 1) / Length(FShuffledCounties);
-    RectProgressBar.Width := RectProgress.Width * ProgressPercent;
-  end;
+  ProgressBar.Value := FCurrentIndex;
 end;
 
 procedure TfrmStateCountyQuiz.ShowQuestion;
@@ -537,6 +528,7 @@ begin
   FStats.Total := 0;
   FCurrentIndex := 0;
   FAnswered := False;
+  ProgressBar.Max := Length(FShuffledCounties);
   UpdateDisplay;
 end;
 
@@ -590,12 +582,6 @@ begin
     Inc(FCurrentIndex);
     UpdateDisplay;
   end;
-end;
-
-procedure TfrmStateCountyQuiz.btnShuffleClick(Sender: TObject);
-begin
-  ShuffleCounties;
-  ResetQuiz;
 end;
 
 procedure TfrmStateCountyQuiz.btnResetClick(Sender: TObject);

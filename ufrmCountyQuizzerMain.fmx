@@ -117,7 +117,7 @@ object frmStateCountyQuiz: TfrmStateCountyQuiz
         Size.Height = 20.00000000000000000
         Size.PlatformDefault = False
         TabOrder = 2
-        Text = 'Spelling (Type name)'
+        Text = 'Spelling (Unscramble the name)'
         OnChange = rbQuizModeChange
       end
     end
@@ -156,24 +156,14 @@ object frmStateCountyQuiz: TfrmStateCountyQuiz
         Text = 'Score: 0/0 (0.0%)'
         TabOrder = 1
       end
-      object RectProgress: TRectangle
-        Align = Top
-        Fill.Color = claLightgray
-        Margins.Top = 5.00000000000000000
+      object ProgressBar: TProgressBar
+        Align = Bottom
+        Orientation = Horizontal
         Position.X = 10.00000000000000000
-        Position.Y = 46.00000000000000000
+        Position.Y = 45.00000000000000000
         Size.Width = 380.00000000000000000
-        Size.Height = 8.00000000000000000
+        Size.Height = 10.00000000000000000
         Size.PlatformDefault = False
-        Stroke.Kind = None
-        object RectProgressBar: TRectangle
-          Align = Left
-          Fill.Color = claBlue
-          Size.Width = 50.00000000000000000
-          Size.Height = 8.00000000000000000
-          Size.PlatformDefault = False
-          Stroke.Kind = None
-        end
       end
     end
     object LayQuiz: TLayout
@@ -444,18 +434,6 @@ object frmStateCountyQuiz: TfrmStateCountyQuiz
         Text = 'Next'
         OnClick = btnNextClick
       end
-      object btnShuffle: TButton
-        Align = Right
-        Margins.Left = 5.00000000000000000
-        Position.X = 220.00000000000000000
-        Position.Y = 10.00000000000000000
-        Size.Width = 85.00000000000000000
-        Size.Height = 40.00000000000000000
-        Size.PlatformDefault = False
-        TabOrder = 2
-        Text = 'Shuffle'
-        OnClick = btnShuffleClick
-      end
       object btnReset: TButton
         Align = Right
         Position.X = 305.00000000000000000
@@ -463,7 +441,7 @@ object frmStateCountyQuiz: TfrmStateCountyQuiz
         Size.Width = 85.00000000000000000
         Size.Height = 40.00000000000000000
         Size.PlatformDefault = False
-        TabOrder = 3
+        TabOrder = 2
         Text = 'Reset'
         OnClick = btnResetClick
       end
