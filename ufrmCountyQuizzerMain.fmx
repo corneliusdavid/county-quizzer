@@ -191,7 +191,7 @@ object frmStateCountyQuiz: TfrmStateCountyQuiz
         Size.Width = 380.00000000000000000
         Size.Height = 222.00000000000000000
         Size.PlatformDefault = False
-        TabIndex = 0
+        TabIndex = 2
         TabOrder = 0
         TabPosition = None
         Sizes = (
@@ -205,7 +205,7 @@ object frmStateCountyQuiz: TfrmStateCountyQuiz
           CustomIcon = <
             item
             end>
-          IsSelected = True
+          IsSelected = False
           Size.Width = 8.00000000000000000
           Size.Height = 8.00000000000000000
           Size.PlatformDefault = False
@@ -217,18 +217,35 @@ object frmStateCountyQuiz: TfrmStateCountyQuiz
           object memoRecall: TMemo
             Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
             DataDetectorTypes = []
+            OnChange = memoRecallChange
             Align = Client
             Margins.Left = 10.00000000000000000
             Margins.Top = 5.00000000000000000
             Margins.Right = 10.00000000000000000
-            Margins.Bottom = 70.00000000000000000
+            Margins.Bottom = 10.00000000000000000
             Size.Width = 360.00000000000000000
-            Size.Height = 140.00000000000000000
+            Size.Height = 170.00000000000000000
             Size.PlatformDefault = False
             TabOrder = 2
-            Visible = False
             Viewport.Width = 356.00000000000000000
-            Viewport.Height = 136.00000000000000000
+            Viewport.Height = 166.00000000000000000
+          end
+          object lblQuestion: TLabel
+            Align = Top
+            StyledSettings = [Family, FontColor]
+            Margins.Left = 10.00000000000000000
+            Margins.Top = 10.00000000000000000
+            Margins.Right = 10.00000000000000000
+            Margins.Bottom = 5.00000000000000000
+            Position.X = 10.00000000000000000
+            Position.Y = 10.00000000000000000
+            Size.Width = 360.00000000000000000
+            Size.Height = 22.00000000000000000
+            Size.PlatformDefault = False
+            TextSettings.Font.Size = 16.00000000000000000
+            TextSettings.Font.StyleExt = {00070000000000000004000000}
+            Text = 'Name all counties in Oregon:'
+            TabOrder = 0
           end
         end
         object tabMultChoice: TTabItem
@@ -251,9 +268,8 @@ object frmStateCountyQuiz: TfrmStateCountyQuiz
             Margins.Right = 10.00000000000000000
             Margins.Bottom = 70.00000000000000000
             Size.Width = 360.00000000000000000
-            Size.Height = 140.00000000000000000
+            Size.Height = 147.00000000000000000
             Size.PlatformDefault = False
-            Visible = False
             TabOrder = 4
             object btnChoice1: TButton
               Align = Top
@@ -303,7 +319,7 @@ object frmStateCountyQuiz: TfrmStateCountyQuiz
           CustomIcon = <
             item
             end>
-          IsSelected = False
+          IsSelected = True
           Size.Width = 8.00000000000000000
           Size.Height = 8.00000000000000000
           Size.PlatformDefault = False
@@ -315,9 +331,9 @@ object frmStateCountyQuiz: TfrmStateCountyQuiz
           object edtSpelling: TEdit
             Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
             Align = Top
-            TabOrder = 2
+            TabOrder = 1
             Position.X = 10.00000000000000000
-            Position.Y = 60.00000000000000000
+            Position.Y = 70.00000000000000000
             Margins.Left = 10.00000000000000000
             Margins.Top = 5.00000000000000000
             Margins.Right = 10.00000000000000000
@@ -325,7 +341,6 @@ object frmStateCountyQuiz: TfrmStateCountyQuiz
             Size.Width = 360.00000000000000000
             Size.Height = 35.00000000000000000
             Size.PlatformDefault = False
-            Visible = False
             OnKeyUp = edtSpellingKeyUp
           end
           object lblCountyHint: TLabel
@@ -334,31 +349,29 @@ object frmStateCountyQuiz: TfrmStateCountyQuiz
             Margins.Left = 10.00000000000000000
             Margins.Bottom = 5.00000000000000000
             Position.X = 10.00000000000000000
-            Position.Y = 37.00000000000000000
-            Size.Width = 360.00000000000000000
+            Position.Y = 42.00000000000000000
+            Size.Width = 370.00000000000000000
             Size.Height = 18.00000000000000000
             Size.PlatformDefault = False
             TextSettings.Font.Size = 14.00000000000000000
             Text = '_ _ _ _ _ _ (6 letters)'
-            Visible = False
-            TabOrder = 1
+            TabOrder = 0
           end
-          object lblQuestion: TLabel
+          object Label1: TLabel
             Align = Top
             StyledSettings = [Family, FontColor]
             Margins.Left = 10.00000000000000000
-            Margins.Top = 10.00000000000000000
-            Margins.Right = 10.00000000000000000
+            Margins.Top = 2.00000000000000000
             Margins.Bottom = 5.00000000000000000
             Position.X = 10.00000000000000000
-            Position.Y = 10.00000000000000000
-            Size.Width = 360.00000000000000000
-            Size.Height = 22.00000000000000000
+            Position.Y = 2.00000000000000000
+            Size.Width = 370.00000000000000000
+            Size.Height = 35.00000000000000000
             Size.PlatformDefault = False
             TextSettings.Font.Size = 16.00000000000000000
             TextSettings.Font.StyleExt = {00070000000000000004000000}
-            Text = 'Name all counties in Oregon:'
-            TabOrder = 0
+            Text = 'Unscramble the county name:'
+            TabOrder = 2
           end
         end
       end
