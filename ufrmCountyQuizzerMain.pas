@@ -295,14 +295,24 @@ begin
 end;
 
 procedure TfrmStateCountyQuiz.ShowAnswer(const UserAnswer: string; IsCorrect: Boolean);
+var
+  IsCompletion: Boolean;
 begin
   FAnswered := True;
   btnCheck.Enabled := False;
 
-  if FQuizMode = qmRecall then
-    // ShowAnswer is only called when completed
-    lblAnswer.Text := Format('Completed! You got %d out of %d counties.',
-          [FStats.Correct, FCurrentState.CountyCount])
+  // Check if this is a completion message (empty UserAnswer indicates completion)
+  IsCompletion := (UserAnswer = '') and ((FQuizMode = qmRecall) or 
+    ((FQuizMode in [qmMultChoice, qmSpelling]) and (FCurrentIndex >= Length(FShuffledCounties) - 1)));
+
+  if IsCompletion then
+  begin
+    // Show completion message for any quiz mode
+    lblAnswer.Text := Format('Quiz Completed! You got %d out of %d counties correct (%.1f%%).',
+          [FStats.Correct, FStats.Total, FStats.Accuracy]);
+    RectAnswer.Fill.Color := TAlphaColorRec.Lightblue;
+    btnNext.Enabled := False; // No next button on completion
+  end
   else begin
     if IsCorrect then begin
       lblAnswer.Text := '✓ Correct!';
@@ -312,7 +322,7 @@ begin
       RectAnswer.Fill.Color := TAlphaColorRec.Lightcoral;
     end;
 
-    // Enable next button for non-recall modes
+    // Enable next button for non-recall modes (and not completion)
     if FQuizMode <> qmRecall then
         btnNext.Enabled := True;
   end;
@@ -330,6 +340,11 @@ end;
 procedure TfrmStateCountyQuiz.SetQuizMode(Mode: TQuizMode);
 begin
   FQuizMode := Mode;
+  
+  // Reset score for new quiz mode
+  FStats.Correct := 0;
+  FStats.Total := 0;
+  
   case Mode of
     qmRecall:
       begin
@@ -484,7 +499,17 @@ begin
     begin
       IsCorrect := SameText(Trim(edtSpelling.Text), GetCurrentCounty);
       UpdateStats(IsCorrect);
-      ShowAnswer(edtSpelling.Text, IsCorrect);
+      
+      // Check if this is the last question
+      if FCurrentIndex >= Length(FShuffledCounties) - 1 then
+      begin
+        // Update progress for final question
+        Inc(FCurrentIndex);
+        UpdateDisplay;
+        ShowAnswer('', True);  // Show completion message
+      end
+      else
+        ShowAnswer(edtSpelling.Text, IsCorrect);
     end;
   end;
 end;
@@ -507,13 +532,27 @@ procedure TfrmStateCountyQuiz.btnChoiceClick(Sender: TObject);
 var
   SelectedCounty: string;
   IsCorrect: Boolean;
+  IsLastQuestion: Boolean;
 begin
   if FAnswered then Exit;
 
   SelectedCounty := (Sender as TButton).Text;
   IsCorrect := SameText(SelectedCounty, GetCurrentCounty);
   UpdateStats(IsCorrect);
-  ShowAnswer(SelectedCounty, IsCorrect);
+  
+  // Check if this is the last question
+  IsLastQuestion := FCurrentIndex >= Length(FShuffledCounties) - 1;
+  
+  if IsLastQuestion then
+  begin
+    // Update progress for final question
+    Inc(FCurrentIndex);
+    UpdateDisplay;
+    // Show completion message for last question
+    ShowAnswer('', True);  // Use empty string and True to trigger completion message
+  end
+  else
+    ShowAnswer(SelectedCounty, IsCorrect);
 end;
 
 function TfrmStateCountyQuiz.CountyMatchFound(const ACounty: string): Boolean;
