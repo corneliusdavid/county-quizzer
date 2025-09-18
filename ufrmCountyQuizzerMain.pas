@@ -7,7 +7,7 @@ uses
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.StdCtrls,
   FMX.Controls.Presentation, FMX.ScrollBox, FMX.Memo, FMX.Edit, FMX.ListBox,
   FMX.Layouts, FMX.Objects, System.Generics.Collections, System.Generics.Defaults,
-  FMX.Memo.Types, FMX.TabControl, udmCountyData;
+  FMX.Memo.Types, FMX.TabControl, FMX.Ani, udmCountyData;
 
 type
   TQuizMode = (qmRecall, qmMultChoice, qmSpelling);
@@ -49,6 +49,9 @@ type
     btnReset: TButton;
     lblCountyHint: TLabel;
     StyleBook1: TStyleBook;
+    CompletionCard: TPanel;
+    CompletionIcon: TLabel;
+    CompletionText: TLabel;
     QuizTabs: TTabControl;
     tabRecall: TTabItem;
     tabMultChoice: TTabItem;
@@ -74,6 +77,7 @@ type
     FQuizMode: TQuizMode;
     FStats: TQuizStats;
     FAnswered: Boolean;
+    FCompletionAnimation: TFloatAnimation;
 
     procedure InitializeStates;
     procedure LoadStateData(const StateName: string);
@@ -93,6 +97,9 @@ type
     procedure UpdateProgressBar;
     procedure SetupMobileLayout;
     procedure UpdateProgressLabel;
+    procedure ShowCompletionCard;
+    procedure HideCompletionCard;
+    procedure SetupCompletionCard;
   public
     const
       APPLICATION_NAME = 'County Quizzer';
@@ -132,6 +139,9 @@ begin
   // Setup mobile-friendly layout
   SetupMobileLayout;
   
+  // Setup completion card
+  SetupCompletionCard;
+  
   // Load default state (Oregon)
   cmbStates.ItemIndex := cmbStates.Items.IndexOf('Oregon');
   cmbStatesChange(nil);
@@ -142,6 +152,7 @@ end;
 
 procedure TfrmStateCountyQuiz.FormDestroy(Sender: TObject);
 begin
+  FCompletionAnimation.Free;
   FStates.Free;
 end;
 
@@ -312,6 +323,9 @@ begin
           [FStats.Correct, FStats.Total, FStats.Accuracy]);
     RectAnswer.Fill.Color := TAlphaColorRec.Lightblue;
     btnNext.Enabled := False; // No next button on completion
+    
+    // Show completion card
+    ShowCompletionCard;
   end
   else begin
     if IsCorrect then begin
@@ -365,6 +379,7 @@ begin
 
   FCurrentIndex := 0;
   FAnswered := False;
+  HideCompletionCard;
   UpdateDisplay;
 end;
 
@@ -458,6 +473,7 @@ begin
   FCurrentIndex := 0;
   FAnswered := False;
   ProgressBar.Max := Length(FShuffledCounties);
+  HideCompletionCard;
   UpdateDisplay;
 end;
 
@@ -600,6 +616,60 @@ begin
   lblProgress.Text := Format('Progress: %d/%d', [FCurrentIndex, Length(FShuffledCounties)]);
 end;
 
+procedure TfrmStateCountyQuiz.SetupCompletionCard;
+begin
+  // Create animation for slide-up effect
+  FCompletionAnimation := TFloatAnimation.Create(Self);
+  FCompletionAnimation.Parent := CompletionCard;
+  FCompletionAnimation.PropertyName := 'Position.Y';
+  FCompletionAnimation.Duration := 0.3;
+  FCompletionAnimation.AnimationType := TAnimationType.InOut;
+  FCompletionAnimation.Interpolation := TInterpolationType.Quadratic;
+  
+  // Position card initially below visible area
+  CompletionCard.Position.Y := LayButtons.Height + 10;
+end;
+
+procedure TfrmStateCountyQuiz.ShowCompletionCard;
+var
+  Accuracy: Double;
+begin
+  Accuracy := FStats.Accuracy;
+  
+  // Set icon and text based on score
+  if Accuracy >= 100.0 then
+  begin
+    CompletionIcon.Text := '🏆';
+    CompletionText.Text := 'Perfect!';
+    CompletionCard.StyleLookup := 'goldpanel'; // Will fall back to default if not available
+  end
+  else if Accuracy > 60.0 then
+  begin
+    CompletionIcon.Text := '⭐';
+    CompletionText.Text := 'Good Job!';
+    CompletionCard.StyleLookup := 'greenpanel'; // Will fall back to default if not available
+  end
+  else
+  begin
+    CompletionIcon.Text := '📚';
+    CompletionText.Text := 'Keep Practicing!';
+    CompletionCard.StyleLookup := 'bluepanel'; // Will fall back to default if not available
+  end;
+  
+  // Show card and animate slide up
+  CompletionCard.Visible := True;
+  CompletionCard.BringToFront;
+  
+  FCompletionAnimation.StopValue := 10; // Final Y position
+  FCompletionAnimation.StartValue := LayButtons.Height + 10; // Start below visible area
+  FCompletionAnimation.Start;
+end;
+
+procedure TfrmStateCountyQuiz.HideCompletionCard;
+begin
+  CompletionCard.Visible := False;
+  FCompletionAnimation.Stop;
+end;
 
 
 end.

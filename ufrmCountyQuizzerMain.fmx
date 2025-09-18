@@ -4,6 +4,7 @@ object frmStateCountyQuiz: TfrmStateCountyQuiz
   Caption = 'US State Counties Quiz'
   ClientHeight = 600
   ClientWidth = 400
+  Position = MainFormCenter
   FormFactor.Width = 320
   FormFactor.Height = 568
   FormFactor.Devices = [Desktop, iPhone, iPad]
@@ -15,8 +16,8 @@ object frmStateCountyQuiz: TfrmStateCountyQuiz
     Styles = <
       item
       end>
-    Left = 128
-    Top = 48
+    Left = 280
+    Top = 128
   end
   object LayMain: TLayout
     Align = Client
@@ -217,8 +218,8 @@ object frmStateCountyQuiz: TfrmStateCountyQuiz
             Size.Height = 170.000000000000000000
             Size.PlatformDefault = False
             TabOrder = 2
-            Viewport.Width = 360.000000000000000000
-            Viewport.Height = 170.000000000000000000
+            Viewport.Width = 356.000000000000000000
+            Viewport.Height = 166.000000000000000000
           end
           object lblQuestion: TLabel
             Align = Top
@@ -431,7 +432,7 @@ object frmStateCountyQuiz: TfrmStateCountyQuiz
         Size.Height = 40.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 1
-        Text = 'Next'
+        Text = '&Next'
         OnClick = btnNextClick
       end
       object btnReset: TButton
@@ -444,6 +445,42 @@ object frmStateCountyQuiz: TfrmStateCountyQuiz
         TabOrder = 2
         Text = 'Reset'
         OnClick = btnResetClick
+      end
+      object CompletionCard: TPanel
+        Margins.Left = 10.000000000000000000
+        Margins.Top = 10.000000000000000000
+        Margins.Right = 10.000000000000000000
+        Margins.Bottom = 10.000000000000000000
+        Position.X = 100.000000000000000000
+        Position.Y = 11.000000000000000000
+        Size.Width = 191.000000000000000000
+        Size.Height = 38.000000000000000000
+        Size.PlatformDefault = False
+        Visible = False
+        TabOrder = 3
+        object CompletionIcon: TLabel
+          Align = Left
+          StyledSettings = [Family, FontColor]
+          Size.Width = 40.000000000000000000
+          Size.Height = 38.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 24.000000000000000000
+          TextSettings.HorzAlign = Center
+          Text = #240#376#143#8224
+          TabOrder = 0
+        end
+        object CompletionText: TLabel
+          Align = Client
+          StyledSettings = [Family, FontColor]
+          Size.Width = 151.000000000000000000
+          Size.Height = 38.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 14.000000000000000000
+          TextSettings.Font.StyleExt = {00070000000000000004000000}
+          TextSettings.HorzAlign = Center
+          Text = 'Perfect!'
+          TabOrder = 1
+        end
       end
     end
   end
