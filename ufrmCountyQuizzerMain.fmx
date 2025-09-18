@@ -20,30 +20,30 @@ object frmStateCountyQuiz: TfrmStateCountyQuiz
   end
   object LayMain: TLayout
     Align = Client
-    Size.Width = 400.00000000000000000
-    Size.Height = 600.00000000000000000
+    Size.Width = 400.000000000000000000
+    Size.Height = 600.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 0
     object LayTop: TLayout
       Align = Top
-      Padding.Left = 10.00000000000000000
-      Padding.Top = 10.00000000000000000
-      Padding.Right = 10.00000000000000000
-      Padding.Bottom = 5.00000000000000000
-      Size.Width = 400.00000000000000000
-      Size.Height = 120.00000000000000000
+      Padding.Left = 10.000000000000000000
+      Padding.Top = 10.000000000000000000
+      Padding.Right = 10.000000000000000000
+      Padding.Bottom = 5.000000000000000000
+      Size.Width = 400.000000000000000000
+      Size.Height = 120.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 0
       object lblTitle: TLabel
         Align = Top
         StyledSettings = [Family, Style]
-        Margins.Bottom = 5.00000000000000000
-        Position.X = 10.00000000000000000
-        Position.Y = 10.00000000000000000
-        Size.Width = 380.00000000000000000
-        Size.Height = 25.00000000000000000
+        Margins.Bottom = 5.000000000000000000
+        Position.X = 10.000000000000000000
+        Position.Y = 10.000000000000000000
+        Size.Width = 380.000000000000000000
+        Size.Height = 25.000000000000000000
         Size.PlatformDefault = False
-        TextSettings.Font.Size = 18.00000000000000000
+        TextSettings.Font.Size = 18.000000000000000000
         TextSettings.HorzAlign = Center
         Text = 'State Counties Quiz'
         TabOrder = 0
@@ -51,23 +51,23 @@ object frmStateCountyQuiz: TfrmStateCountyQuiz
       object lblState: TLabel
         Align = Top
         StyledSettings = [Family, Style, FontColor]
-        Position.X = 10.00000000000000000
-        Position.Y = 40.00000000000000000
-        Size.Width = 380.00000000000000000
-        Size.Height = 20.00000000000000000
+        Position.X = 10.000000000000000000
+        Position.Y = 40.000000000000000000
+        Size.Width = 380.000000000000000000
+        Size.Height = 20.000000000000000000
         Size.PlatformDefault = False
-        TextSettings.Font.Size = 14.00000000000000000
+        TextSettings.Font.Size = 14.000000000000000000
         Text = 'Select State:'
         TabOrder = 1
       end
       object cmbStates: TComboBox
         Align = Top
-        Margins.Top = 5.00000000000000000
-        Margins.Bottom = 10.00000000000000000
-        Position.X = 10.00000000000000000
-        Position.Y = 65.00000000000000000
-        Size.Width = 380.00000000000000000
-        Size.Height = 30.00000000000000000
+        Margins.Top = 5.000000000000000000
+        Margins.Bottom = 10.000000000000000000
+        Position.X = 10.000000000000000000
+        Position.Y = 65.000000000000000000
+        Size.Width = 380.000000000000000000
+        Size.Height = 30.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 2
         OnChange = cmbStatesChange
@@ -75,23 +75,23 @@ object frmStateCountyQuiz: TfrmStateCountyQuiz
     end
     object LayQuizMode: TLayout
       Align = Top
-      Padding.Left = 10.00000000000000000
-      Padding.Top = 5.00000000000000000
-      Padding.Right = 10.00000000000000000
-      Padding.Bottom = 5.00000000000000000
-      Position.Y = 120.00000000000000000
-      Size.Width = 400.00000000000000000
-      Size.Height = 80.00000000000000000
+      Padding.Left = 10.000000000000000000
+      Padding.Top = 5.000000000000000000
+      Padding.Right = 10.000000000000000000
+      Padding.Bottom = 5.000000000000000000
+      Position.Y = 120.000000000000000000
+      Size.Width = 400.000000000000000000
+      Size.Height = 80.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 1
       object rbRecall: TRadioButton
         Align = Top
         IsChecked = True
-        Margins.Bottom = 3.00000000000000000
-        Position.X = 10.00000000000000000
-        Position.Y = 5.00000000000000000
-        Size.Width = 380.00000000000000000
-        Size.Height = 20.00000000000000000
+        Margins.Bottom = 3.000000000000000000
+        Position.X = 10.000000000000000000
+        Position.Y = 5.000000000000000000
+        Size.Width = 380.000000000000000000
+        Size.Height = 20.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 0
         Text = 'Recall (List all counties)'
@@ -99,11 +99,11 @@ object frmStateCountyQuiz: TfrmStateCountyQuiz
       end
       object rbRecognition: TRadioButton
         Align = Top
-        Margins.Bottom = 3.00000000000000000
-        Position.X = 10.00000000000000000
-        Position.Y = 28.00000000000000000
-        Size.Width = 380.00000000000000000
-        Size.Height = 20.00000000000000000
+        Margins.Bottom = 3.000000000000000000
+        Position.X = 10.000000000000000000
+        Position.Y = 28.000000000000000000
+        Size.Width = 380.000000000000000000
+        Size.Height = 20.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 1
         Text = 'Recognition (Multiple choice)'
@@ -111,10 +111,10 @@ object frmStateCountyQuiz: TfrmStateCountyQuiz
       end
       object rbSpelling: TRadioButton
         Align = Top
-        Position.X = 10.00000000000000000
-        Position.Y = 51.00000000000000000
-        Size.Width = 380.00000000000000000
-        Size.Height = 20.00000000000000000
+        Position.X = 10.000000000000000000
+        Position.Y = 51.000000000000000000
+        Size.Width = 380.000000000000000000
+        Size.Height = 20.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 2
         Text = 'Spelling (Unscramble the name)'
@@ -123,63 +123,63 @@ object frmStateCountyQuiz: TfrmStateCountyQuiz
     end
     object LayProgress: TLayout
       Align = Top
-      Padding.Left = 10.00000000000000000
-      Padding.Top = 5.00000000000000000
-      Padding.Right = 10.00000000000000000
-      Padding.Bottom = 5.00000000000000000
-      Position.Y = 200.00000000000000000
-      Size.Width = 400.00000000000000000
-      Size.Height = 60.00000000000000000
+      Padding.Left = 10.000000000000000000
+      Padding.Top = 5.000000000000000000
+      Padding.Right = 10.000000000000000000
+      Padding.Bottom = 5.000000000000000000
+      Position.Y = 200.000000000000000000
+      Size.Width = 400.000000000000000000
+      Size.Height = 60.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 2
       object lblProgress: TLabel
         Align = Top
         StyledSettings = [Family, Style, FontColor]
-        Position.X = 10.00000000000000000
-        Position.Y = 5.00000000000000000
-        Size.Width = 380.00000000000000000
-        Size.Height = 18.00000000000000000
+        Position.X = 10.000000000000000000
+        Position.Y = 5.000000000000000000
+        Size.Width = 380.000000000000000000
+        Size.Height = 18.000000000000000000
         Size.PlatformDefault = False
-        TextSettings.Font.Size = 14.00000000000000000
+        TextSettings.Font.Size = 14.000000000000000000
         Text = 'Progress: 1/36'
         TabOrder = 0
       end
       object lblStats: TLabel
         Align = Top
         StyledSettings = [Family, Style, FontColor]
-        Position.X = 10.00000000000000000
-        Position.Y = 23.00000000000000000
-        Size.Width = 380.00000000000000000
-        Size.Height = 18.00000000000000000
+        Position.X = 10.000000000000000000
+        Position.Y = 23.000000000000000000
+        Size.Width = 380.000000000000000000
+        Size.Height = 18.000000000000000000
         Size.PlatformDefault = False
-        TextSettings.Font.Size = 14.00000000000000000
+        TextSettings.Font.Size = 14.000000000000000000
         Text = 'Score: 0/0 (0.0%)'
         TabOrder = 1
       end
       object ProgressBar: TProgressBar
         Align = Bottom
         Orientation = Horizontal
-        Position.X = 10.00000000000000000
-        Position.Y = 45.00000000000000000
-        Size.Width = 380.00000000000000000
-        Size.Height = 10.00000000000000000
+        Position.X = 10.000000000000000000
+        Position.Y = 45.000000000000000000
+        Size.Width = 380.000000000000000000
+        Size.Height = 10.000000000000000000
         Size.PlatformDefault = False
       end
     end
     object LayQuiz: TLayout
       Align = Client
-      Padding.Left = 10.00000000000000000
-      Padding.Top = 5.00000000000000000
-      Padding.Right = 10.00000000000000000
-      Padding.Bottom = 5.00000000000000000
-      Size.Width = 400.00000000000000000
-      Size.Height = 280.00000000000000000
+      Padding.Left = 10.000000000000000000
+      Padding.Top = 5.000000000000000000
+      Padding.Right = 10.000000000000000000
+      Padding.Bottom = 5.000000000000000000
+      Size.Width = 400.000000000000000000
+      Size.Height = 280.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 3
       object QuizTabs: TTabControl
         Align = Client
-        Size.Width = 380.00000000000000000
-        Size.Height = 222.00000000000000000
+        Size.Width = 380.000000000000000000
+        Size.Height = 222.000000000000000000
         Size.PlatformDefault = False
         TabIndex = 2
         TabOrder = 0
@@ -196,43 +196,43 @@ object frmStateCountyQuiz: TfrmStateCountyQuiz
             item
             end>
           IsSelected = False
-          Size.Width = 8.00000000000000000
-          Size.Height = 8.00000000000000000
+          Size.Width = 8.000000000000000000
+          Size.Height = 8.000000000000000000
           Size.PlatformDefault = False
           StyleLookup = ''
           TabOrder = 0
           Text = 'tabRecall'
-          ExplicitSize.cx = 8.00000000000000000
-          ExplicitSize.cy = 8.00000000000000000
+          ExplicitSize.cx = 8.000000000000000000
+          ExplicitSize.cy = 8.000000000000000000
           object memoRecall: TMemo
             Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
             DataDetectorTypes = []
             OnChange = memoRecallChange
             Align = Client
-            Margins.Left = 10.00000000000000000
-            Margins.Top = 5.00000000000000000
-            Margins.Right = 10.00000000000000000
-            Margins.Bottom = 10.00000000000000000
-            Size.Width = 360.00000000000000000
-            Size.Height = 170.00000000000000000
+            Margins.Left = 10.000000000000000000
+            Margins.Top = 5.000000000000000000
+            Margins.Right = 10.000000000000000000
+            Margins.Bottom = 10.000000000000000000
+            Size.Width = 360.000000000000000000
+            Size.Height = 170.000000000000000000
             Size.PlatformDefault = False
             TabOrder = 2
-            Viewport.Width = 356.00000000000000000
-            Viewport.Height = 166.00000000000000000
+            Viewport.Width = 360.000000000000000000
+            Viewport.Height = 170.000000000000000000
           end
           object lblQuestion: TLabel
             Align = Top
             StyledSettings = [Family, FontColor]
-            Margins.Left = 10.00000000000000000
-            Margins.Top = 10.00000000000000000
-            Margins.Right = 10.00000000000000000
-            Margins.Bottom = 5.00000000000000000
-            Position.X = 10.00000000000000000
-            Position.Y = 10.00000000000000000
-            Size.Width = 360.00000000000000000
-            Size.Height = 22.00000000000000000
+            Margins.Left = 10.000000000000000000
+            Margins.Top = 10.000000000000000000
+            Margins.Right = 10.000000000000000000
+            Margins.Bottom = 5.000000000000000000
+            Position.X = 10.000000000000000000
+            Position.Y = 10.000000000000000000
+            Size.Width = 360.000000000000000000
+            Size.Height = 22.000000000000000000
             Size.PlatformDefault = False
-            TextSettings.Font.Size = 16.00000000000000000
+            TextSettings.Font.Size = 16.000000000000000000
             TextSettings.Font.StyleExt = {00070000000000000004000000}
             Text = 'Name all counties in Oregon:'
             TabOrder = 0
@@ -243,29 +243,29 @@ object frmStateCountyQuiz: TfrmStateCountyQuiz
             item
             end>
           IsSelected = False
-          Size.Width = 8.00000000000000000
-          Size.Height = 8.00000000000000000
+          Size.Width = 8.000000000000000000
+          Size.Height = 8.000000000000000000
           Size.PlatformDefault = False
           StyleLookup = ''
           TabOrder = 0
           Text = 'tabMultChoice'
-          ExplicitSize.cx = 8.00000000000000000
-          ExplicitSize.cy = 8.00000000000000000
+          ExplicitSize.cx = 8.000000000000000000
+          ExplicitSize.cy = 8.000000000000000000
           object LayMultiChoice: TLayout
             Align = Client
-            Margins.Left = 10.00000000000000000
-            Margins.Top = 5.00000000000000000
-            Margins.Right = 10.00000000000000000
-            Margins.Bottom = 70.00000000000000000
-            Size.Width = 360.00000000000000000
-            Size.Height = 147.00000000000000000
+            Margins.Left = 10.000000000000000000
+            Margins.Top = 5.000000000000000000
+            Margins.Right = 10.000000000000000000
+            Margins.Bottom = 70.000000000000000000
+            Size.Width = 360.000000000000000000
+            Size.Height = 147.000000000000000000
             Size.PlatformDefault = False
             TabOrder = 4
             object btnChoice1: TButton
               Align = Top
-              Margins.Bottom = 8.00000000000000000
-              Size.Width = 360.00000000000000000
-              Size.Height = 45.00000000000000000
+              Margins.Bottom = 8.000000000000000000
+              Size.Width = 360.000000000000000000
+              Size.Height = 45.000000000000000000
               Size.PlatformDefault = False
               TabOrder = 0
               Text = 'Choice 1'
@@ -273,10 +273,10 @@ object frmStateCountyQuiz: TfrmStateCountyQuiz
             end
             object btnChoice2: TButton
               Align = Top
-              Margins.Bottom = 8.00000000000000000
-              Position.Y = 53.00000000000000000
-              Size.Width = 360.00000000000000000
-              Size.Height = 45.00000000000000000
+              Margins.Bottom = 8.000000000000000000
+              Position.Y = 53.000000000000000000
+              Size.Width = 360.000000000000000000
+              Size.Height = 45.000000000000000000
               Size.PlatformDefault = False
               TabOrder = 1
               Text = 'Choice 2'
@@ -284,10 +284,10 @@ object frmStateCountyQuiz: TfrmStateCountyQuiz
             end
             object btnChoice3: TButton
               Align = Top
-              Margins.Bottom = 8.00000000000000000
-              Position.Y = 106.00000000000000000
-              Size.Width = 360.00000000000000000
-              Size.Height = 45.00000000000000000
+              Margins.Bottom = 8.000000000000000000
+              Position.Y = 106.000000000000000000
+              Size.Width = 360.000000000000000000
+              Size.Height = 45.000000000000000000
               Size.PlatformDefault = False
               TabOrder = 2
               Text = 'Choice 3'
@@ -295,9 +295,9 @@ object frmStateCountyQuiz: TfrmStateCountyQuiz
             end
             object btnChoice4: TButton
               Align = Top
-              Position.Y = 159.00000000000000000
-              Size.Width = 360.00000000000000000
-              Size.Height = 45.00000000000000000
+              Position.Y = 159.000000000000000000
+              Size.Width = 360.000000000000000000
+              Size.Height = 45.000000000000000000
               Size.PlatformDefault = False
               TabOrder = 3
               Text = 'Choice 4'
@@ -310,55 +310,55 @@ object frmStateCountyQuiz: TfrmStateCountyQuiz
             item
             end>
           IsSelected = True
-          Size.Width = 8.00000000000000000
-          Size.Height = 8.00000000000000000
+          Size.Width = 8.000000000000000000
+          Size.Height = 8.000000000000000000
           Size.PlatformDefault = False
           StyleLookup = ''
           TabOrder = 0
           Text = 'tabSpelling'
-          ExplicitSize.cx = 8.00000000000000000
-          ExplicitSize.cy = 8.00000000000000000
+          ExplicitSize.cx = 8.000000000000000000
+          ExplicitSize.cy = 8.000000000000000000
           object edtSpelling: TEdit
             Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
             Align = Top
             TabOrder = 1
-            Position.X = 10.00000000000000000
-            Position.Y = 70.00000000000000000
-            Margins.Left = 10.00000000000000000
-            Margins.Top = 5.00000000000000000
-            Margins.Right = 10.00000000000000000
-            Margins.Bottom = 5.00000000000000000
-            Size.Width = 360.00000000000000000
-            Size.Height = 35.00000000000000000
+            Position.X = 10.000000000000000000
+            Position.Y = 70.000000000000000000
+            Margins.Left = 10.000000000000000000
+            Margins.Top = 5.000000000000000000
+            Margins.Right = 10.000000000000000000
+            Margins.Bottom = 5.000000000000000000
+            Size.Width = 360.000000000000000000
+            Size.Height = 35.000000000000000000
             Size.PlatformDefault = False
             OnKeyUp = edtSpellingKeyUp
           end
           object lblCountyHint: TLabel
             Align = Top
             StyledSettings = [Family, Style, FontColor]
-            Margins.Left = 10.00000000000000000
-            Margins.Bottom = 5.00000000000000000
-            Position.X = 10.00000000000000000
-            Position.Y = 42.00000000000000000
-            Size.Width = 370.00000000000000000
-            Size.Height = 18.00000000000000000
+            Margins.Left = 10.000000000000000000
+            Margins.Bottom = 5.000000000000000000
+            Position.X = 10.000000000000000000
+            Position.Y = 42.000000000000000000
+            Size.Width = 370.000000000000000000
+            Size.Height = 18.000000000000000000
             Size.PlatformDefault = False
-            TextSettings.Font.Size = 14.00000000000000000
+            TextSettings.Font.Size = 14.000000000000000000
             Text = '_ _ _ _ _ _ (6 letters)'
             TabOrder = 0
           end
           object Label1: TLabel
             Align = Top
             StyledSettings = [Family, FontColor]
-            Margins.Left = 10.00000000000000000
-            Margins.Top = 2.00000000000000000
-            Margins.Bottom = 5.00000000000000000
-            Position.X = 10.00000000000000000
-            Position.Y = 2.00000000000000000
-            Size.Width = 370.00000000000000000
-            Size.Height = 35.00000000000000000
+            Margins.Left = 10.000000000000000000
+            Margins.Top = 2.000000000000000000
+            Margins.Bottom = 5.000000000000000000
+            Position.X = 10.000000000000000000
+            Position.Y = 2.000000000000000000
+            Size.Width = 370.000000000000000000
+            Size.Height = 35.000000000000000000
             Size.PlatformDefault = False
-            TextSettings.Font.Size = 16.00000000000000000
+            TextSettings.Font.Size = 16.000000000000000000
             TextSettings.Font.StyleExt = {00070000000000000004000000}
             Text = 'Unscramble the county name:'
             TabOrder = 2
@@ -368,29 +368,29 @@ object frmStateCountyQuiz: TfrmStateCountyQuiz
       object RectAnswer: TRectangle
         Align = Bottom
         Fill.Color = claLightblue
-        Margins.Left = 10.00000000000000000
-        Margins.Top = 5.00000000000000000
-        Margins.Right = 10.00000000000000000
-        Margins.Bottom = 5.00000000000000000
-        Position.X = 20.00000000000000000
-        Position.Y = 232.00000000000000000
-        Size.Width = 360.00000000000000000
-        Size.Height = 38.00000000000000000
+        Margins.Left = 10.000000000000000000
+        Margins.Top = 5.000000000000000000
+        Margins.Right = 10.000000000000000000
+        Margins.Bottom = 5.000000000000000000
+        Position.X = 20.000000000000000000
+        Position.Y = 232.000000000000000000
+        Size.Width = 360.000000000000000000
+        Size.Height = 38.000000000000000000
         Size.PlatformDefault = False
         Stroke.Color = claGray
         object lblAnswer: TLabel
           Align = Bottom
           StyledSettings = [Family, FontColor]
-          Margins.Left = 10.00000000000000000
-          Margins.Top = 10.00000000000000000
-          Margins.Right = 10.00000000000000000
-          Margins.Bottom = 10.00000000000000000
-          Position.X = 10.00000000000000000
-          Position.Y = 5.00000000000000000
-          Size.Width = 340.00000000000000000
-          Size.Height = 23.00000000000000000
+          Margins.Left = 10.000000000000000000
+          Margins.Top = 10.000000000000000000
+          Margins.Right = 10.000000000000000000
+          Margins.Bottom = 10.000000000000000000
+          Position.X = 10.000000000000000000
+          Position.Y = 5.000000000000000000
+          Size.Width = 340.000000000000000000
+          Size.Height = 23.000000000000000000
           Size.PlatformDefault = False
-          TextSettings.Font.Size = 16.00000000000000000
+          TextSettings.Font.Size = 16.000000000000000000
           TextSettings.Font.StyleExt = {00070000000000000004000000}
           TextSettings.HorzAlign = Center
           Text = 'Answer feedback goes here'
@@ -400,22 +400,22 @@ object frmStateCountyQuiz: TfrmStateCountyQuiz
     end
     object LayButtons: TLayout
       Align = Bottom
-      Padding.Left = 10.00000000000000000
-      Padding.Top = 10.00000000000000000
-      Padding.Right = 10.00000000000000000
-      Padding.Bottom = 10.00000000000000000
-      Position.Y = 540.00000000000000000
-      Size.Width = 400.00000000000000000
-      Size.Height = 60.00000000000000000
+      Padding.Left = 10.000000000000000000
+      Padding.Top = 10.000000000000000000
+      Padding.Right = 10.000000000000000000
+      Padding.Bottom = 10.000000000000000000
+      Position.Y = 540.000000000000000000
+      Size.Width = 400.000000000000000000
+      Size.Height = 60.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 4
       object btnCheck: TButton
         Align = Left
-        Margins.Right = 5.00000000000000000
-        Position.X = 10.00000000000000000
-        Position.Y = 10.00000000000000000
-        Size.Width = 85.00000000000000000
-        Size.Height = 40.00000000000000000
+        Margins.Right = 5.000000000000000000
+        Position.X = 10.000000000000000000
+        Position.Y = 10.000000000000000000
+        Size.Width = 85.000000000000000000
+        Size.Height = 40.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 0
         Text = 'Check'
@@ -424,11 +424,11 @@ object frmStateCountyQuiz: TfrmStateCountyQuiz
       object btnNext: TButton
         Align = Left
         Enabled = False
-        Margins.Right = 5.00000000000000000
-        Position.X = 100.00000000000000000
-        Position.Y = 10.00000000000000000
-        Size.Width = 85.00000000000000000
-        Size.Height = 40.00000000000000000
+        Margins.Right = 5.000000000000000000
+        Position.X = 100.000000000000000000
+        Position.Y = 10.000000000000000000
+        Size.Width = 85.000000000000000000
+        Size.Height = 40.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 1
         Text = 'Next'
@@ -436,10 +436,10 @@ object frmStateCountyQuiz: TfrmStateCountyQuiz
       end
       object btnReset: TButton
         Align = Right
-        Position.X = 305.00000000000000000
-        Position.Y = 10.00000000000000000
-        Size.Width = 85.00000000000000000
-        Size.Height = 40.00000000000000000
+        Position.X = 305.000000000000000000
+        Position.Y = 10.000000000000000000
+        Size.Width = 85.000000000000000000
+        Size.Height = 40.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 2
         Text = 'Reset'

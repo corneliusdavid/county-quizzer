@@ -7,17 +7,12 @@ uses
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.StdCtrls,
   FMX.Controls.Presentation, FMX.ScrollBox, FMX.Memo, FMX.Edit, FMX.ListBox,
   FMX.Layouts, FMX.Objects, System.Generics.Collections, System.Generics.Defaults,
-  FMX.Memo.Types, FMX.TabControl;
+  FMX.Memo.Types, FMX.TabControl, udmCountyData;
 
 type
   TQuizMode = (qmRecall, qmMultChoice, qmSpelling);
-  
-  TStateInfo = record
-    Name: string;
-    CountyCount: Integer;
-    Counties: TArray<string>;
-  end;
-  
+
+
   TQuizStats = record
     Correct: Integer;
     Total: Integer;
@@ -98,6 +93,9 @@ type
     procedure UpdateProgressBar;
     procedure SetupMobileLayout;
     procedure UpdateProgressLabel;
+  public
+    const
+      APPLICATION_NAME = 'County Quizzer';
   end;
 
 var
@@ -122,6 +120,8 @@ end;
 procedure TfrmStateCountyQuiz.FormCreate(Sender: TObject);
 begin
   FStates := TDictionary<string, TStateInfo>.Create;
+  
+  // Initialize states from data module
   InitializeStates;
   
   // Initialize UI
@@ -167,95 +167,25 @@ end;
 
 procedure TfrmStateCountyQuiz.InitializeStates;
 var
+  States: TArray<TStateInfo>;
   StateInfo: TStateInfo;
 begin
-  // test (4 counties)
-  StateInfo.Name := 'Test';
-  StateInfo.CountyCount := 4;
-  StateInfo.Counties := TArray<string>.Create('one', 'two', 'three', 'four');
-  FStates.Add('Test', StateInfo);
-
-  // Oregon (36 counties)
-  StateInfo.Name := 'Oregon';
-  StateInfo.CountyCount := 36;
-  StateInfo.Counties := TArray<string>.Create(
-    'Baker', 'Benton', 'Clackamas', 'Clatsop', 'Columbia', 'Coos', 'Crook', 'Curry',
-    'Deschutes', 'Douglas', 'Gilliam', 'Grant', 'Harney', 'Hood River', 'Jackson',
-    'Jefferson', 'Josephine', 'Klamath', 'Lake', 'Lane', 'Lincoln', 'Linn', 'Malheur',
-    'Marion', 'Morrow', 'Multnomah', 'Polk', 'Sherman', 'Tillamook', 'Umatilla',
-    'Union', 'Wallowa', 'Wasco', 'Washington', 'Wheeler', 'Yamhill'
-  );
-  FStates.Add('Oregon', StateInfo);
-
-  // Washington (39 counties)
-  StateInfo.Name := 'Washington';
-  StateInfo.CountyCount := 39;
-  StateInfo.Counties := TArray<string>.Create(
-    'Adams', 'Asotin', 'Benton', 'Chelan', 'Clallam', 'Clark', 'Columbia', 'Cowlitz',
-    'Douglas', 'Ferry', 'Franklin', 'Garfield', 'Grant', 'Grays Harbor', 'Island',
-    'Jefferson', 'King', 'Kitsap', 'Kittitas', 'Klickitat', 'Lewis', 'Lincoln',
-    'Mason', 'Okanogan', 'Pacific', 'Pend Oreille', 'Pierce', 'San Juan', 'Skagit',
-    'Skamania', 'Snohomish', 'Spokane', 'Stevens', 'Thurston', 'Wahkiakum', 'Walla Walla',
-    'Whatcom', 'Whitman', 'Yakima'
-  );
-  FStates.Add('Washington', StateInfo);
-
-  // California (58 counties)
-  StateInfo.Name := 'California';
-  StateInfo.CountyCount := 58;
-  StateInfo.Counties := TArray<string>.Create(
-    'Alameda', 'Alpine', 'Amador', 'Butte', 'Calaveras', 'Colusa', 'Contra Costa',
-    'Del Norte', 'El Dorado', 'Fresno', 'Glenn', 'Humboldt', 'Imperial', 'Inyo',
-    'Kern', 'Kings', 'Lake', 'Lassen', 'Los Angeles', 'Madera', 'Marin', 'Mariposa',
-    'Mendocino', 'Merced', 'Modoc', 'Mono', 'Monterey', 'Napa', 'Nevada', 'Orange',
-    'Placer', 'Plumas', 'Riverside', 'Sacramento', 'San Benito', 'San Bernardino',
-    'San Diego', 'San Francisco', 'San Joaquin', 'San Luis Obispo', 'San Mateo',
-    'Santa Barbara', 'Santa Clara', 'Santa Cruz', 'Shasta', 'Sierra', 'Siskiyou',
-    'Solano', 'Sonoma', 'Stanislaus', 'Sutter', 'Tehama', 'Trinity', 'Tulare',
-    'Tuolumne', 'Ventura', 'Yolo', 'Yuba'
-  );
-  FStates.Add('California', StateInfo);
-
-  // Texas (254 counties) - Adding larger subset for more challenge
-  StateInfo.Name := 'Texas';
-  StateInfo.CountyCount := 50; // Subset for demo
-  StateInfo.Counties := TArray<string>.Create(
-    'Harris', 'Dallas', 'Tarrant', 'Bexar', 'Travis', 'Collin', 'Denton', 'Fort Bend',
-    'Hidalgo', 'El Paso', 'Williamson', 'Montgomery', 'Galveston', 'Brazoria',
-    'Jefferson', 'Nueces', 'Bell', 'Cameron', 'Brazos', 'Hays', 'McLennan', 'Guadalupe',
-    'Ellis', 'Johnson', 'Kaufman', 'Parker', 'Rockwall', 'Smith', 'Webb', 'Lubbock',
-    'Jefferson', 'Orange', 'Chambers', 'Liberty', 'Waller', 'Bastrop', 'Caldwell',
-    'Comal', 'Kendall', 'Bandera', 'Medina', 'Uvalde', 'Kerr', 'Gillespie', 'Blanco',
-    'Burnet', 'Llano', 'Mason', 'Kimble', 'Menard'
-  );
-  FStates.Add('Texas', StateInfo);
-
-  // Florida (67 counties)
-  StateInfo.Name := 'Florida';
-  StateInfo.CountyCount := 25; // Subset
-  StateInfo.Counties := TArray<string>.Create(
-    'Miami-Dade', 'Broward', 'Palm Beach', 'Hillsborough', 'Orange', 'Pinellas',
-    'Duval', 'Lee', 'Polk', 'Volusia', 'Brevard', 'Pasco', 'Seminole', 'Sarasota',
-    'Manatee', 'Lake', 'Collier', 'Leon', 'Escambia', 'Clay', 'St. Johns',
-    'Osceola', 'Marion', 'Alachua', 'Martin'
-  );
-  FStates.Add('Florida', StateInfo);
-
-  // New York (62 counties)
-  StateInfo.Name := 'New York';
-  StateInfo.CountyCount := 30; // Subset
-  StateInfo.Counties := TArray<string>.Create(
-    'Kings', 'Queens', 'New York', 'Suffolk', 'Bronx', 'Nassau', 'Westchester',
-    'Erie', 'Monroe', 'Richmond', 'Onondaga', 'Orange', 'Rockland', 'Albany',
-    'Oneida', 'Niagara', 'Dutchess', 'Saratoga', 'Rensselaer', 'Broome', 'Jefferson',
-    'St. Lawrence', 'Chautauqua', 'Oswego', 'Ontario', 'Washington', 'Ulster',
-    'Putnam', 'Wayne', 'Cayuga'
-  );
-  FStates.Add('New York', StateInfo);
-
-  // Populate combo box
-  for var State in FStates.Keys do
-    cmbStates.Items.Add(State);
+  try
+    // Load states from data module
+    States := dmCountyData.LoadStates;
+    
+    for StateInfo in States do
+    begin
+      FStates.Add(StateInfo.Name, StateInfo);
+      cmbStates.Items.Add(StateInfo.Name);
+    end;
+  except
+    on E: Exception do
+    begin
+      ShowMessage('Failed to load state data: ' + E.Message);
+      Application.Terminate;
+    end;
+  end;
 end;
 
 procedure TfrmStateCountyQuiz.LoadStateData(const StateName: string);
@@ -432,25 +362,9 @@ begin
 end;
 
 function TfrmStateCountyQuiz.GetRandomCounty: string;
-var
-  ACounty: string;
-  RandomStateIdx: Integer;
-  RandomCountyIdx: Integer;
-  StateList: TArray<string>;
 begin
-  // find random state not the current one
-  StateList := FStates.Keys.ToArray;
-  repeat
-    RandomStateIdx := Random(Length(StateList));
-  until StateList[RandomStateIdx] <> FCurrentState.Name;
-
-  repeat
-    // get a random county from the selected random state
-    RandomCountyIdx := Random(Length(FStates[StateList[RandomStateIdx]].Counties));
-    ACounty := FStates[StateList[RandomStateIdx]].Counties[RandomCountyIdx];
-  until not CountyMatchFound(ACounty);
-
-  Result := ACounty;
+  // Use data module to get random county from other states
+  Result := dmCountyData.GetRandomCountyFromOtherStates(FCurrentState.Name);
 end;
 
 function TfrmStateCountyQuiz.GenerateMultipleChoice: TArray<string>;
@@ -646,6 +560,7 @@ procedure TfrmStateCountyQuiz.UpdateProgressLabel;
 begin
   lblProgress.Text := Format('Progress: %d/%d', [FCurrentIndex, Length(FShuffledCounties)]);
 end;
+
 
 
 end.
