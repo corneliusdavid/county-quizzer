@@ -1,0 +1,123 @@
+inherited frmStateCountyQuiz_Windows: TfrmStateCountyQuiz_Windows
+  DesignerMasterStyle = 0
+  inherited LayMain: TLayout
+    inherited LayTop: TLayout
+      inherited lblTitle: TLabel
+        TextSettings.FontColor = claBlack
+      end
+      inherited lblState: TLabel
+        TextSettings.FontColor = claBlack
+      end
+    end
+    inherited LayQuizMode: TLayout
+      inherited rbRecall: TRadioButton
+        TextSettings.FontColor = claBlack
+      end
+      inherited rbRecognition: TRadioButton
+        TextSettings.FontColor = claBlack
+      end
+      inherited rbSpelling: TRadioButton
+        TextSettings.FontColor = claBlack
+      end
+    end
+    inherited LayProgress: TLayout
+      inherited lblProgress: TLabel
+        TextSettings.FontColor = claBlack
+      end
+      inherited lblStats: TLabel
+        TextSettings.FontColor = claBlack
+      end
+      inherited ProgressBar: TProgressBar
+        Position.Y = 62.00000000000000000
+        Size.Height = 6.00000000000000000
+      end
+    end
+    inherited LayQuiz: TLayout
+      inherited QuizTabs: TTabControl
+        Sizes = (
+          380s
+          209s
+          380s
+          209s
+          380s
+          209s)
+        inherited tabRecall: TTabItem
+          TextSettings.FontColor = claBlack
+          ExplicitSize.cx = 8.00000000000000000
+          ExplicitSize.cy = 8.00000000000000000
+          inherited memoRecall: TMemo
+            TextSettings.FontColor = claBlack
+            Viewport.Width = 360.00000000000000000
+            Viewport.Height = 157.00000000000000000
+          end
+          inherited lblQuestion: TLabel
+            TextSettings.Font.StyleExt = {00070000000000000004000000}
+            TextSettings.FontColor = claBlack
+          end
+        end
+        inherited tabMultChoice: TTabItem
+          TextSettings.FontColor = claBlack
+          ExplicitSize.cx = 8.00000000000000000
+          ExplicitSize.cy = 8.00000000000000000
+          inherited LayMultiChoice: TLayout
+            inherited btnChoice1: TButton
+              TextSettings.FontColor = claBlack
+            end
+            inherited btnChoice2: TButton
+              TextSettings.FontColor = claBlack
+            end
+            inherited btnChoice3: TButton
+              TextSettings.FontColor = claBlack
+            end
+            inherited btnChoice4: TButton
+              TextSettings.FontColor = claBlack
+            end
+          end
+        end
+        inherited tabSpelling: TTabItem
+          TextSettings.FontColor = claBlack
+          ExplicitSize.cx = 8.00000000000000000
+          ExplicitSize.cy = 8.00000000000000000
+          inherited edtSpelling: TEdit
+            TextSettings.FontColor = claBlack
+          end
+          inherited lblCountyHint: TLabel
+            TextSettings.FontColor = claBlack
+          end
+          inherited Label1: TLabel
+            TextSettings.Font.StyleExt = {00070000000000000004000000}
+            TextSettings.FontColor = claBlack
+          end
+        end
+      end
+      inherited RectAnswer: TRectangle
+        Fill.Color = claLightblue
+        Stroke.Color = claGray
+        inherited lblAnswer: TLabel
+          TextSettings.Font.StyleExt = {00070000000000000004000000}
+          TextSettings.FontColor = claBlack
+        end
+      end
+    end
+    inherited LayButtons: TLayout
+      inherited btnCheck: TButton
+        TextSettings.FontColor = claBlack
+      end
+      inherited btnNext: TButton
+        TextSettings.FontColor = claBlack
+      end
+      inherited btnReset: TButton
+        TextSettings.FontColor = claBlack
+      end
+      inherited CompletionCard: TPanel
+        inherited CompletionIcon: TLabel
+          TextSettings.FontColor = claBlack
+        end
+        inherited CompletionText: TLabel
+          TextSettings.Font.StyleExt = {00070000000000000004000000}
+          TextSettings.FontColor = claBlack
+        end
+      end
+    end
+  end
+end
