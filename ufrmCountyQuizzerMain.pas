@@ -111,6 +111,7 @@ var
 implementation
 
 {$R *.fmx}
+{$R *.Windows.fmx MSWINDOWS}
 
 { TQuizStats }
 
