@@ -1,13 +1,49 @@
-inherited frmStateCountyQuiz_Windows: TfrmStateCountyQuiz_Windows
-  DesignerMasterStyle = 0
+inherited frmStateCountyQuiz_SSW3: TfrmStateCountyQuiz_SSW3
+  ClientHeight = 182
+  ClientWidth = 182
+  DesignerMasterStyle = 3
   inherited LayMain: TLayout
+    Size.Width = 182.000000000000000000
+    Size.Height = 182.000000000000000000
+    inherited LayTop: TLayout
+      Size.Width = 182.000000000000000000
+      inherited lblTitle: TLabel
+        Size.Width = 162.000000000000000000
+      end
+      inherited lblState: TLabel
+        Size.Width = 162.000000000000000000
+      end
+      inherited cmbStates: TComboBox
+        Size.Width = 162.000000000000000000
+      end
+    end
+    inherited LayQuizMode: TLayout
+      Size.Width = 182.000000000000000000
+      inherited rbRecall: TRadioButton
+        Size.Width = 162.000000000000000000
+      end
+      inherited rbRecognition: TRadioButton
+        Size.Width = 162.000000000000000000
+      end
+      inherited rbSpelling: TRadioButton
+        Size.Width = 162.000000000000000000
+      end
+    end
     inherited LayProgress: TLayout
+      Size.Width = 182.000000000000000000
+      inherited lblProgress: TLabel
+        Size.Width = 162.000000000000000000
+      end
+      inherited lblStats: TLabel
+        Size.Width = 162.000000000000000000
+      end
       inherited ProgressBar: TProgressBar
-        Position.Y = 53.000000000000000000
-        Size.Height = 6.000000000000000000
+        Size.Width = 162.000000000000000000
       end
     end
     inherited LayQuiz: TLayout
+      Size.Width = 182.000000000000000000
+      Size.Height = 0.000000000000000000
       inherited QuizTabs: TTabControl
         Sizes = (
           380s
@@ -46,6 +82,11 @@ inherited frmStateCountyQuiz_Windows: TfrmStateCountyQuiz_Windows
       end
     end
     inherited LayButtons: TLayout
+      Position.Y = 122.000000000000000000
+      Size.Width = 182.000000000000000000
+      inherited btnReset: TButton
+        Position.X = 87.000000000000000000
+      end
       inherited CompletionCard: TPanel
         inherited CompletionText: TLabel
           TextSettings.Font.StyleExt = {00070000000000000004000000}

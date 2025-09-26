@@ -12,7 +12,7 @@ object frmStateCountyQuiz: TfrmStateCountyQuiz
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   OnResize = FormResize
-  DesignerMasterStyle = 0
+  DesignerMasterStyle = 3
   object StyleBook1: TStyleBook
     Styles = <
       item
@@ -3583,8 +3583,8 @@ object frmStateCountyQuiz: TfrmStateCountyQuiz
             Size.Height = 160.000000000000000000
             Size.PlatformDefault = False
             TabOrder = 2
-            Viewport.Width = 356.000000000000000000
-            Viewport.Height = 156.000000000000000000
+            Viewport.Width = 360.000000000000000000
+            Viewport.Height = 160.000000000000000000
           end
           object lblQuestion: TLabel
             Align = Top

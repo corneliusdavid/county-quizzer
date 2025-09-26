@@ -1,0 +1,128 @@
+inherited frmStateCountyQuiz_XLgXhdpiTb: TfrmStateCountyQuiz_XLgXhdpiTb
+  ClientHeight = 1254
+  ClientWidth = 800
+  DesignerMasterStyle = 3
+  inherited LayMain: TLayout
+    Size.Width = 800.000000000000000000
+    Size.Height = 1254.000000000000000000
+    inherited LayTop: TLayout
+      Size.Width = 800.000000000000000000
+      inherited lblTitle: TLabel
+        Size.Width = 780.000000000000000000
+      end
+      inherited lblState: TLabel
+        Size.Width = 780.000000000000000000
+      end
+      inherited cmbStates: TComboBox
+        Size.Width = 780.000000000000000000
+      end
+    end
+    inherited LayQuizMode: TLayout
+      Size.Width = 800.000000000000000000
+      inherited rbRecall: TRadioButton
+        Size.Width = 780.000000000000000000
+      end
+      inherited rbRecognition: TRadioButton
+        Size.Width = 780.000000000000000000
+      end
+      inherited rbSpelling: TRadioButton
+        Size.Width = 780.000000000000000000
+      end
+    end
+    inherited LayProgress: TLayout
+      Size.Width = 800.000000000000000000
+      inherited lblProgress: TLabel
+        Size.Width = 780.000000000000000000
+      end
+      inherited lblStats: TLabel
+        Size.Width = 780.000000000000000000
+      end
+      inherited ProgressBar: TProgressBar
+        Size.Width = 780.000000000000000000
+      end
+    end
+    inherited LayQuiz: TLayout
+      Size.Width = 800.000000000000000000
+      Size.Height = 924.000000000000000000
+      inherited QuizTabs: TTabControl
+        Size.Width = 780.000000000000000000
+        Size.Height = 866.000000000000000000
+        Sizes = (
+          780s
+          866s
+          780s
+          866s
+          780s
+          866s)
+        inherited tabRecall: TTabItem
+          ExplicitSize.cx = 8.000000000000000000
+          ExplicitSize.cy = 8.000000000000000000
+          inherited memoRecall: TMemo
+            Size.Width = 760.000000000000000000
+            Size.Height = 814.000000000000000000
+            Viewport.Width = 760.000000000000000000
+            Viewport.Height = 814.000000000000000000
+          end
+          inherited lblQuestion: TLabel
+            Size.Width = 760.000000000000000000
+            TextSettings.Font.StyleExt = {00070000000000000004000000}
+          end
+        end
+        inherited tabMultChoice: TTabItem
+          ExplicitSize.cx = 8.000000000000000000
+          ExplicitSize.cy = 8.000000000000000000
+          inherited LayMultiChoice: TLayout
+            Size.Width = 760.000000000000000000
+            Size.Height = 791.000000000000000000
+            inherited btnChoice1: TButton
+              Size.Width = 760.000000000000000000
+            end
+            inherited btnChoice2: TButton
+              Size.Width = 760.000000000000000000
+            end
+            inherited btnChoice3: TButton
+              Size.Width = 760.000000000000000000
+            end
+            inherited btnChoice4: TButton
+              Size.Width = 760.000000000000000000
+            end
+          end
+        end
+        inherited tabSpelling: TTabItem
+          ExplicitSize.cx = 8.000000000000000000
+          ExplicitSize.cy = 8.000000000000000000
+          inherited edtSpelling: TEdit
+            Size.Width = 760.000000000000000000
+          end
+          inherited lblCountyHint: TLabel
+            Size.Width = 770.000000000000000000
+          end
+          inherited Label1: TLabel
+            Size.Width = 770.000000000000000000
+            TextSettings.Font.StyleExt = {00070000000000000004000000}
+          end
+        end
+      end
+      inherited RectAnswer: TRectangle
+        Position.Y = 876.000000000000000000
+        Size.Width = 760.000000000000000000
+        inherited lblAnswer: TLabel
+          Size.Width = 740.000000000000000000
+          TextSettings.Font.StyleExt = {00070000000000000004000000}
+        end
+      end
+    end
+    inherited LayButtons: TLayout
+      Position.Y = 1194.000000000000000000
+      Size.Width = 800.000000000000000000
+      inherited btnReset: TButton
+        Position.X = 705.000000000000000000
+      end
+      inherited CompletionCard: TPanel
+        inherited CompletionText: TLabel
+          TextSettings.Font.StyleExt = {00070000000000000004000000}
+        end
+      end
+    end
+  end
+end
