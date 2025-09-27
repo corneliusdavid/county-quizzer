@@ -179,27 +179,21 @@ begin
 end;
 
 function TdmCountyData.GetRandomCountyFromOtherStates(const CurrentStateName: string): string;
-var
-  CountiesList: TStringList;
-  RandomIndex: Integer;
 begin
-  CountiesList := TStringList.Create;
-  try
-    Query.SQL.Text := 'SELECT c.name FROM counties c ' +
-                     'JOIN states s ON c.state_id = s.id ' +
-                     'WHERE s.name <> :current_state ORDER BY RANDOM() LIMIT 1';
-    Query.ParamByName('current_state').AsString := CurrentStateName;
-    Query.Open;
-    
-    if not Query.Eof then
-      Result := Query.FieldByName('name').AsString
-    else
-      Result := 'Unknown County'; // Fallback
-      
-    Query.Close;
-  finally
-    CountiesList.Free;
-  end;
+  Query.SQL.Text := '''
+  SELECT c.name FROM counties c
+  JOIN states s ON c.state_id = s.id
+  WHERE s.name <> :current_state ORDER BY RANDOM() LIMIT 1
+  ''';
+  Query.ParamByName('current_state').AsString := CurrentStateName;
+  Query.Open;
+
+  if not Query.Eof then
+    Result := Query.FieldByName('name').AsString
+  else
+    Result := 'Unknown County'; // Fallback
+
+  Query.Close;
 end;
 
 end.

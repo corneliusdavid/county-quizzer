@@ -420,19 +420,23 @@ end;
 
 function TfrmStateCountyQuiz.GenerateMultipleChoice: TArray<string>;
 var
-  Correct: string;
+  CorrectCounty: string;
+  RandomCounty: string;
   Options: TList<string>;
   i, RandomIndex: Integer;
 begin
-  Correct := GetCurrentCounty;
+  CorrectCounty := GetCurrentCounty;
   Options := TList<string>.Create;
   try
-    Options.Add(Correct);
+    Options.Add(CorrectCounty);
 
     // Add 3 random incorrect options from other states
     while Options.Count < 4 do
     begin
-      Options.Add(GetRandomCounty);
+      repeat
+        RandomCounty := GetRandomCounty;
+      until not CountyMatchFound(RandomCounty);
+      Options.Add(RandomCounty);
     end;
 
     // Shuffle the options
@@ -653,7 +657,7 @@ begin
   FCompletionAnimation := TFloatAnimation.Create(Self);
   FCompletionAnimation.Parent := CompletionCard;
   FCompletionAnimation.PropertyName := 'Position.Y';
-  FCompletionAnimation.Duration := 0.3;
+  FCompletionAnimation.Duration := 0.5;
   FCompletionAnimation.AnimationType := TAnimationType.InOut;
   FCompletionAnimation.Interpolation := TInterpolationType.Quadratic;
 
