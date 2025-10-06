@@ -1,10 +1,10 @@
 inherited frmStateCountyQuiz_SmXhdpiPh: TfrmStateCountyQuiz_SmXhdpiPh
-  ClientHeight = 374
+  ClientHeight = 375
   ClientWidth = 250
   DesignerMasterStyle = 3
   inherited LayMain: TLayout
     Size.Width = 250.000000000000000000
-    Size.Height = 374.000000000000000000
+    Size.Height = 375.000000000000000000
     inherited LayTop: TLayout
       Size.Width = 250.000000000000000000
       inherited lblTitle: TLabel
@@ -43,7 +43,7 @@ inherited frmStateCountyQuiz_SmXhdpiPh: TfrmStateCountyQuiz_SmXhdpiPh
     end
     inherited LayQuiz: TLayout
       Size.Width = 250.000000000000000000
-      Size.Height = 44.000000000000000000
+      Size.Height = 29.000000000000000000
       inherited QuizTabs: TTabControl
         Size.Width = 230.000000000000000000
         Size.Height = 0.000000000000000000
@@ -104,7 +104,7 @@ inherited frmStateCountyQuiz_SmXhdpiPh: TfrmStateCountyQuiz_SmXhdpiPh
         end
       end
       inherited RectAnswer: TRectangle
-        Position.Y = -4.000000000000000000
+        Position.Y = -19.000000000000000000
         Size.Width = 210.000000000000000000
         inherited lblAnswer: TLabel
           Size.Width = 190.000000000000000000
@@ -113,7 +113,7 @@ inherited frmStateCountyQuiz_SmXhdpiPh: TfrmStateCountyQuiz_SmXhdpiPh
       end
     end
     inherited LayButtons: TLayout
-      Position.Y = 314.000000000000000000
+      Position.Y = 315.000000000000000000
       Size.Width = 250.000000000000000000
       inherited btnReset: TButton
         Position.X = 155.000000000000000000

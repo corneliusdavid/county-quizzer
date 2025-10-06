@@ -11,17 +11,17 @@ inherited frmStateCountyQuiz_Windows: TfrmStateCountyQuiz_Windows
       inherited QuizTabs: TTabControl
         Sizes = (
           380s
-          212s
+          196s
           380s
-          212s
+          196s
           380s
-          212s)
+          196s)
         inherited tabRecall: TTabItem
           ExplicitSize.cx = 8.000000000000000000
           ExplicitSize.cy = 8.000000000000000000
           inherited memoRecall: TMemo
             Viewport.Width = 360.000000000000000000
-            Viewport.Height = 160.000000000000000000
+            Viewport.Height = 144.000000000000000000
           end
           inherited lblQuestion: TLabel
             TextSettings.Font.StyleExt = {00070000000000000004000000}

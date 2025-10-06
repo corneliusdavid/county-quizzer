@@ -3447,43 +3447,49 @@ object frmStateCountyQuiz: TfrmStateCountyQuiz
       Padding.Bottom = 5.000000000000000000
       Position.Y = 120.000000000000000000
       Size.Width = 400.000000000000000000
-      Size.Height = 86.000000000000000000
+      Size.Height = 102.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 1
       object rbRecall: TRadioButton
         Align = Top
+        StyledSettings = [Family, Style, FontColor]
         IsChecked = True
         Margins.Bottom = 3.000000000000000000
         Position.X = 10.000000000000000000
         Position.Y = 5.000000000000000000
         Size.Width = 380.000000000000000000
-        Size.Height = 22.000000000000000000
+        Size.Height = 26.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 0
         Text = 'Recall (List all counties)'
+        TextSettings.Font.Size = 20.000000000000000000
         OnChange = rbQuizModeChange
       end
       object rbRecognition: TRadioButton
         Align = Top
+        StyledSettings = [Family, Style, FontColor]
         Margins.Bottom = 3.000000000000000000
         Position.X = 10.000000000000000000
-        Position.Y = 30.000000000000000000
+        Position.Y = 34.000000000000000000
         Size.Width = 380.000000000000000000
-        Size.Height = 22.000000000000000000
+        Size.Height = 26.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 1
         Text = 'Recognition (Multiple choice)'
+        TextSettings.Font.Size = 20.000000000000000000
         OnChange = rbQuizModeChange
       end
       object rbSpelling: TRadioButton
         Align = Top
+        StyledSettings = [Family, Style, FontColor]
         Position.X = 10.000000000000000000
-        Position.Y = 55.000000000000000000
+        Position.Y = 63.000000000000000000
         Size.Width = 380.000000000000000000
-        Size.Height = 23.000000000000000000
+        Size.Height = 26.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 2
         Text = 'Spelling (Unscramble the name)'
+        TextSettings.Font.Size = 20.000000000000000000
         OnChange = rbQuizModeChange
       end
     end
@@ -3493,7 +3499,7 @@ object frmStateCountyQuiz: TfrmStateCountyQuiz
       Padding.Top = 5.000000000000000000
       Padding.Right = 10.000000000000000000
       Padding.Bottom = 5.000000000000000000
-      Position.Y = 206.000000000000000000
+      Position.Y = 222.000000000000000000
       Size.Width = 400.000000000000000000
       Size.Height = 64.000000000000000000
       Size.PlatformDefault = False
@@ -3539,24 +3545,24 @@ object frmStateCountyQuiz: TfrmStateCountyQuiz
       Padding.Right = 10.000000000000000000
       Padding.Bottom = 5.000000000000000000
       Size.Width = 400.000000000000000000
-      Size.Height = 270.000000000000000000
+      Size.Height = 254.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 3
       object QuizTabs: TTabControl
         Align = Client
         Size.Width = 380.000000000000000000
-        Size.Height = 212.000000000000000000
+        Size.Height = 196.000000000000000000
         Size.PlatformDefault = False
         TabIndex = 2
         TabOrder = 0
         TabPosition = None
         Sizes = (
           380s
-          212s
+          196s
           380s
-          212s
+          196s
           380s
-          212s)
+          196s)
         object tabRecall: TTabItem
           CustomIcon = <
             item
@@ -3580,11 +3586,11 @@ object frmStateCountyQuiz: TfrmStateCountyQuiz
             Margins.Right = 10.000000000000000000
             Margins.Bottom = 10.000000000000000000
             Size.Width = 360.000000000000000000
-            Size.Height = 160.000000000000000000
+            Size.Height = 144.000000000000000000
             Size.PlatformDefault = False
             TabOrder = 2
-            Viewport.Width = 360.000000000000000000
-            Viewport.Height = 160.000000000000000000
+            Viewport.Width = 356.000000000000000000
+            Viewport.Height = 140.000000000000000000
           end
           object lblQuestion: TLabel
             Align = Top
@@ -3624,7 +3630,7 @@ object frmStateCountyQuiz: TfrmStateCountyQuiz
             Margins.Right = 10.000000000000000000
             Margins.Bottom = 70.000000000000000000
             Size.Width = 360.000000000000000000
-            Size.Height = 137.000000000000000000
+            Size.Height = 121.000000000000000000
             Size.PlatformDefault = False
             TabOrder = 4
             object btnChoice1: TButton
@@ -3739,7 +3745,7 @@ object frmStateCountyQuiz: TfrmStateCountyQuiz
         Margins.Right = 10.000000000000000000
         Margins.Bottom = 5.000000000000000000
         Position.X = 20.000000000000000000
-        Position.Y = 222.000000000000000000
+        Position.Y = 206.000000000000000000
         Size.Width = 360.000000000000000000
         Size.Height = 38.000000000000000000
         Size.PlatformDefault = False

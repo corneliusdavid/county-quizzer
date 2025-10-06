@@ -1,23 +1,22 @@
 object dmCountyData: TdmCountyData
   OnCreate = DataModuleCreate
   OnDestroy = DataModuleDestroy
-  Height = 563
-  Width = 794
-  PixelsPerInch = 144
+  Height = 375
+  Width = 529
   object Connection: TFDConnection
     Params.Strings = (
       'DriverID=SQLite')
     LoginPrompt = False
-    Left = 108
-    Top = 84
+    Left = 72
+    Top = 56
   end
   object Query: TFDQuery
     Connection = Connection
-    Left = 252
-    Top = 84
+    Left = 168
+    Top = 56
   end
   object FDPhysSQLiteDriverLink: TFDPhysSQLiteDriverLink
-    Left = 120
-    Top = 204
+    Left = 80
+    Top = 136
   end
 end

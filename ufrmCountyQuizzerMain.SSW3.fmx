@@ -1,63 +1,63 @@
 inherited frmStateCountyQuiz_SSW3: TfrmStateCountyQuiz_SSW3
-  ClientHeight = 182
-  ClientWidth = 182
+  ClientHeight = 183
+  ClientWidth = 183
   DesignerMasterStyle = 3
   inherited LayMain: TLayout
-    Size.Width = 182.000000000000000000
-    Size.Height = 182.000000000000000000
+    Size.Width = 183.000000000000000000
+    Size.Height = 183.000000000000000000
     inherited LayTop: TLayout
-      Size.Width = 182.000000000000000000
+      Size.Width = 183.000000000000000000
       inherited lblTitle: TLabel
-        Size.Width = 162.000000000000000000
+        Size.Width = 163.000000000000000000
       end
       inherited lblState: TLabel
-        Size.Width = 162.000000000000000000
+        Size.Width = 163.000000000000000000
       end
       inherited cmbStates: TComboBox
-        Size.Width = 162.000000000000000000
+        Size.Width = 163.000000000000000000
       end
     end
     inherited LayQuizMode: TLayout
-      Size.Width = 182.000000000000000000
+      Size.Width = 183.000000000000000000
       inherited rbRecall: TRadioButton
-        Size.Width = 162.000000000000000000
+        Size.Width = 163.000000000000000000
       end
       inherited rbRecognition: TRadioButton
-        Size.Width = 162.000000000000000000
+        Size.Width = 163.000000000000000000
       end
       inherited rbSpelling: TRadioButton
-        Size.Width = 162.000000000000000000
+        Size.Width = 163.000000000000000000
       end
     end
     inherited LayProgress: TLayout
-      Size.Width = 182.000000000000000000
+      Size.Width = 183.000000000000000000
       inherited lblProgress: TLabel
-        Size.Width = 162.000000000000000000
+        Size.Width = 163.000000000000000000
       end
       inherited lblStats: TLabel
-        Size.Width = 162.000000000000000000
+        Size.Width = 163.000000000000000000
       end
       inherited ProgressBar: TProgressBar
-        Size.Width = 162.000000000000000000
+        Size.Width = 163.000000000000000000
       end
     end
     inherited LayQuiz: TLayout
-      Size.Width = 182.000000000000000000
+      Size.Width = 183.000000000000000000
       Size.Height = 0.000000000000000000
       inherited QuizTabs: TTabControl
         Sizes = (
           380s
-          212s
+          196s
           380s
-          212s
+          196s
           380s
-          212s)
+          196s)
         inherited tabRecall: TTabItem
           ExplicitSize.cx = 8.000000000000000000
           ExplicitSize.cy = 8.000000000000000000
           inherited memoRecall: TMemo
             Viewport.Width = 360.000000000000000000
-            Viewport.Height = 160.000000000000000000
+            Viewport.Height = 144.000000000000000000
           end
           inherited lblQuestion: TLabel
             TextSettings.Font.StyleExt = {00070000000000000004000000}
@@ -82,10 +82,10 @@ inherited frmStateCountyQuiz_SSW3: TfrmStateCountyQuiz_SSW3
       end
     end
     inherited LayButtons: TLayout
-      Position.Y = 122.000000000000000000
-      Size.Width = 182.000000000000000000
+      Position.Y = 123.000000000000000000
+      Size.Width = 183.000000000000000000
       inherited btnReset: TButton
-        Position.X = 87.000000000000000000
+        Position.X = 88.000000000000000000
       end
       inherited CompletionCard: TPanel
         inherited CompletionText: TLabel

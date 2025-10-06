@@ -58,7 +58,11 @@ end;
 
 function TdmCountyData.GetDatabasePath: string;
 begin
+  {$IF DEFINED(iOS) or DEFINED(ANDROID)}
+  Result := TPath.Combine(TPath.GetDocumentsPath, 'Counties.db');
+  {$ELSE}
   Result := TPath.Combine(TPath.Combine(TPath.GetDocumentsPath, TfrmStateCountyQuiz.APPLICATION_NAME), 'Counties.db');
+  {$IFEND}
 end;
 
 procedure TdmCountyData.InitializeDatabase;
